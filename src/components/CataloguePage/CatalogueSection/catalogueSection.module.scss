@@ -136,6 +136,16 @@
     line-height: 1.5;
   }
 
+  &__promoTitleBreak {
+    @include screen-sm {
+      display: none;
+    }
+
+    @include screen-xss {
+      display: none;
+    }
+  }
+
   &__countSkeleton {
     background-color: color-mix(in srgb, var(--skeleton-color) 58%, #7d746d);
   }

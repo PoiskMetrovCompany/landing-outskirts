@@ -1,3 +1,4 @@
+import type { ReactNode } from "react"
 import Image from "next/image"
 
 import Button from "@/components/ui/Button"
@@ -7,7 +8,7 @@ import styles from "./promoCard.module.scss"
 interface PromoCardProps {
   imageSrc: string
   imageAlt: string
-  title: string
+  title: ReactNode
   subtitle: string
   buttonLabel?: string
   onButtonClick?: () => void

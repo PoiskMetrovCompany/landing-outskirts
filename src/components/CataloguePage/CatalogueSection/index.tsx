@@ -177,7 +177,13 @@ const CatalogueSection = () => {
               <PromoCard
                 imageSrc="/images/catalogue/image-discount.webp"
                 imageAlt="скидка на квартиры"
-                title="скидка на квартиры"
+                title={
+                  <>
+                    скидка
+                    <br className={styles.catalogueSection__promoTitleBreak} />
+                    на квартиры
+                  </>
+                }
                 subtitle="до 4%"
                 onButtonClick={openRequestDialog}
               />
@@ -202,7 +208,13 @@ const CatalogueSection = () => {
               <PromoCard
                 imageSrc="/images/catalogue/image-discount.webp"
                 imageAlt="скидка на квартиры"
-                title="скидка на квартиры"
+                title={
+                  <>
+                    скидка
+                    <br className={styles.catalogueSection__promoTitleBreak} />
+                    на квартиры
+                  </>
+                }
                 subtitle="до 4%"
                 onButtonClick={openRequestDialog}
               />
