@@ -105,7 +105,7 @@ const PromotionsSlider = ({ onMoreClick }: PromotionsSliderProps) => {
                   <p className={styles.promotions__price}>{slide.price}</p>
                 </div>
 
-                {/* <MoreLink
+                <MoreLink
                   href={slide.href}
                   className={styles.promotions__moreLink}
                   onClick={(event) => {
@@ -116,7 +116,7 @@ const PromotionsSlider = ({ onMoreClick }: PromotionsSliderProps) => {
                   }}
                 >
                   Подробнее
-                </MoreLink> */}
+                </MoreLink>
               </div>
             </SwiperSlide>
           ))}

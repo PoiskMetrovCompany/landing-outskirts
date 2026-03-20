@@ -109,7 +109,10 @@ export default function RequestDialog({
     <Dialog.Root open={isOpen} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.dialog__overlay} />
-        <Dialog.Content className={styles.dialog__content}>
+        <Dialog.Content
+          className={styles.dialog__content}
+          onOpenAutoFocus={(event) => event.preventDefault()}
+        >
           <div className={styles.dialog__header}>
             <Dialog.Title className={styles.dialog__title}>
               оставить Заявку
