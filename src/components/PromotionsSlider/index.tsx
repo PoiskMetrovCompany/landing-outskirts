@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import type { CSSProperties } from "react"
+import { Fragment } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper/modules"
 
@@ -10,28 +11,23 @@ import styles from "./promotionsSlider.module.scss"
 
 const slides = [
   {
-    title: "КВАРТИРЫ ПОД 0,1% НА ЭТАПЕ СТРОЙКИ",
-    price: "от 13 980 ₽/мес",
+    title: `скидка <br> на квартиры`,
+    price: "до 4%",
     href: "#",
   },
   {
-    title: "РАССРОЧКА 0% ОТ ЗАСТРОЙЩИКА",
-    price: "от 80 000 ₽/мес",
+    title: "Квартиры <br> с ремонтом",
+    price: "платеж от ~18 000 ₽/мес",
     href: "#",
   },
   {
-    title: "ИПОТЕКА ОТ 3,7% НА ВЕСЬ СРОК",
-    price: "от 17 653 ₽/мес",
+    title: "Субсидированная ипотека",
+    price: "на весь срок",
     href: "#",
   },
   {
-    title: "СКИДКИ НА ПАРКИНГ ДО 250 000 ₽",
-    price: "от 560 000 ₽",
-    href: "#",
-  },
-  {
-    title: "КВАРТИРЫ ПОД 0,1% НА ЭТАПЕ СТРОЙКИ",
-    price: "от 13 980 ₽/мес",
+    title: "Семейная ипотека",
+    price: "первоначальный взнос от ~20%",
     href: "#",
   },
 ]
@@ -46,6 +42,30 @@ const activeBulletColors = [
 
 interface PromotionsSliderProps {
   onMoreClick?: () => void
+}
+
+const renderTitle = (title: string) => {
+  if (!title.includes("<br")) {
+    return title
+  }
+
+  const titleParts = title.split(/<br\s*\/?>/i)
+
+  return (
+    <span>
+      {titleParts.map((part, index) => (
+        <Fragment key={`${part}-${index}`}>
+          {index > 0 ? (
+            <>
+              <span className={styles.promotions__titleMobileSpace}> </span>
+              <br className={styles.promotions__titleBreak} />
+            </>
+          ) : null}
+          {part.trim()}
+        </Fragment>
+      ))}
+    </span>
+  )
 }
 
 const PromotionsSlider = ({ onMoreClick }: PromotionsSliderProps) => {
@@ -79,11 +99,13 @@ const PromotionsSlider = ({ onMoreClick }: PromotionsSliderProps) => {
             >
               <div className={styles.promotions__content}>
                 <div className={styles.promotions__textGroup}>
-                  <h2 className={styles.promotions__title}>{slide.title}</h2>
+                  <h2 className={styles.promotions__title}>
+                    {renderTitle(slide.title)}
+                  </h2>
                   <p className={styles.promotions__price}>{slide.price}</p>
                 </div>
 
-                <MoreLink
+                {/* <MoreLink
                   href={slide.href}
                   className={styles.promotions__moreLink}
                   onClick={(event) => {
@@ -94,7 +116,7 @@ const PromotionsSlider = ({ onMoreClick }: PromotionsSliderProps) => {
                   }}
                 >
                   Подробнее
-                </MoreLink>
+                </MoreLink> */}
               </div>
             </SwiperSlide>
           ))}

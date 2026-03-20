@@ -36,7 +36,8 @@ const CatalogPresentationSection = ({
   const presentationFileUrl = `/presentations/${encodeURIComponent(presentationFileName)}`
   const [phone, setPhone] = useState("")
   const [isConsentChecked, setIsConsentChecked] = useState(false)
-  const [isMarketingConsentChecked, setIsMarketingConsentChecked] = useState(false)
+  const [isMarketingConsentChecked, setIsMarketingConsentChecked] =
+    useState(false)
   const [isSubmittingChannel, setIsSubmittingChannel] =
     useState<PresentationChannel | null>(null)
 
@@ -145,7 +146,9 @@ const CatalogPresentationSection = ({
               disabled={!isFormValid || Boolean(isSubmittingChannel)}
               onClick={() => void handlePresentationClick("max")}
             >
-              {isSubmittingChannel === "max" ? "Отправляем..." : "Получить в MAX"}
+              {isSubmittingChannel === "max"
+                ? "Отправляем..."
+                : "Получить в MAX"}
             </Button>
 
             <Button
@@ -170,7 +173,9 @@ const CatalogPresentationSection = ({
             <span className={styles.catalogPresentation__consentText}>
               Я соглашаюсь с условиями{" "}
               <strong>
-                <Link href="/policy">политики обработки персональных данных</Link>
+                <Link href="/policy">
+                  политики конфиденциальности и обработки персональных данных
+                </Link>
               </strong>
             </span>
           </label>
@@ -187,7 +192,7 @@ const CatalogPresentationSection = ({
             <span className={styles.catalogPresentation__consentText}>
               Я соглашаюсь с условиями{" "}
               <strong>
-                <Link href="/agreement">рекламной рассылки</Link>
+                <Link href="/agreement">рекламных рассылок</Link>
               </strong>
             </span>
           </label>
@@ -201,23 +206,23 @@ const CatalogPresentationSection = ({
           fill
           priority={false}
           className={`${styles.catalogPresentation__image} ${styles["catalogPresentation__image--default"]}`}
-          sizes="(max-width: 1919px) 57vw, 1095px"
+          // sizes="(max-width: 1919px) 57vw, 1095px"
         />
         <Image
-          src="/images/main-page/book-lg.webp"
+          src="/images/main-page/book-lg.png"
           alt="Каталог проекта"
           fill
           priority={false}
           className={`${styles.catalogPresentation__image} ${styles["catalogPresentation__image--lg"]}`}
-          sizes="(max-width: 1919px) 57vw, 1095px"
+          // sizes="(max-width: 1919px) 57vw, 1095px"
         />
         <Image
-          src="/images/main-page/book-md.webp"
+          src="/images/main-page/book-md.png"
           alt="Каталог проекта"
           fill
           priority={false}
           className={`${styles.catalogPresentation__image} ${styles["catalogPresentation__image--md"]}`}
-          sizes="(max-width: 1919px) 57vw, 1095px"
+          // sizes="(max-width: 1919px) 57vw, 1095px"
         />
       </div>
     </SectionTag>

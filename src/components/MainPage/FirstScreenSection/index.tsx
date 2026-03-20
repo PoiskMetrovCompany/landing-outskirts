@@ -15,10 +15,12 @@ export default function FirstScreenSection() {
       <div className={styles.firstScreen__bgEllips} />
       <div className={styles.firstScreen__left}>
         <div className={styles.firstScreen__left_text}>
-          <p className={styles.firstScreen__badge}>Сдача IV квартал 2028</p>
+          <p className={styles.firstScreen__badge}>
+            Ближайшая сдача III квартал 2026
+          </p>
 
           <h1 className={styles.firstScreen__title}>
-            ЯСНЫЙ БЕРЕГ — КВАРТАЛ НА БЕРЕГУ ОБИ
+            ЖК ОКОЛИЦА — ДУШЕВНЫЙ РАЙОН
           </h1>
         </div>
 

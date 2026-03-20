@@ -32,7 +32,7 @@ export default function PurchaseWaysSection() {
         <div className={styles.purchaseWays__content}>
           <article className={styles.purchaseWays__leftCard}>
             <h3 className={styles.purchaseWays__leftCardTitle}>
-              Семейная ипотека от 3,7%
+              Ипотека с льготной ставкой от 5%
             </h3>
 
             <Button
@@ -50,7 +50,7 @@ export default function PurchaseWaysSection() {
               aria-label="Стандартная ипотека"
             >
               <h3 className={styles.purchaseWays__rightCardPrimaryTitle}>
-                Стандартная ипотека от 0,1%
+                трейд-ин старого жилья
               </h3>
 
               <MoreLink
@@ -77,7 +77,7 @@ export default function PurchaseWaysSection() {
                 aria-label="Рассрочка от застройщика"
               >
                 <h3 className={styles.purchaseWays__rightCardSecondaryTitle}>
-                  Рассрочка 0% от застройщика
+                  Рассрочка от застройщика
                 </h3>
 
                 <MoreLink
@@ -112,7 +112,7 @@ export default function PurchaseWaysSection() {
                 aria-label="Скидка за наличный расчет"
               >
                 <h3 className={styles.purchaseWays__rightCardSecondaryTitle}>
-                  Скидка за оплату наличными
+                  скидка на квартиры 4%
                 </h3>
 
                 <MoreLink

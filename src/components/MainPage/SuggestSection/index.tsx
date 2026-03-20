@@ -14,27 +14,27 @@ const SUGGEST_PRESENTATION_FILE_URL = `/presentations/${encodeURIComponent(SUGGE
 const suggestCards = [
   {
     id: "river-view",
-    title: "Квартиры с видом на реку",
+    title: "Скидки на квартиры до 4%",
     image: "/images/main-page/suggest/suggest-1.webp",
-    alt: "Квартиры с видом на реку",
+    alt: "Скидки на квартиры до 4%",
   },
   {
     id: "river-view2",
-    title: "Квартиры под семейную ипотеку 3,7%",
+    title: "Субсидированная ипотека",
     image: "/images/main-page/suggest/suggest-2.webp",
-    alt: "Квартиры под семейную ипотеку 3,7%",
+    alt: "Субсидированная ипотека",
   },
   {
     id: "river-view3",
-    title: "Квартиры под ипотеку от застройщика 0,1% ",
+    title: "Квартиры с ремонтом под ключ ",
     image: "/images/main-page/suggest/suggest-3.webp",
-    alt: "Квартиры под ипотеку от застройщика 0,1%",
+    alt: "Квартиры с ремонтом под ключ",
   },
   {
     id: "river-view4",
-    title: "Квартиры cо скидками",
+    title: "Специальные цены от застройщика",
     image: "/images/main-page/suggest/suggest-4.webp",
-    alt: "Квартиры cо скидками",
+    alt: "Специальные цены от застройщика",
   },
 ]
 
@@ -86,7 +86,8 @@ const SuggestSection = () => {
 
     const payload = {
       phone: getApiPhone(phone),
-      title: "Клиент Лендинга Ясный берег хочет получить предложения от 0.1 проекта",
+      title:
+        "Клиент Лендинга Ясный берег хочет получить предложения от 0.1 проекта",
     }
 
     try {
@@ -155,7 +156,9 @@ const SuggestSection = () => {
               <span className={styles.suggestSection__consentText}>
                 Я соглашаюсь с условиями{" "}
                 <strong>
-                  <Link href="/policy">политики обработки персональных данных</Link>
+                  <Link href="/policy">
+                    политики конфиденциальности и обработки персональных данных
+                  </Link>
                 </strong>
               </span>
             </label>
@@ -171,7 +174,7 @@ const SuggestSection = () => {
               <span className={styles.suggestSection__consentText}>
                 Я соглашаюсь с условиями{" "}
                 <strong>
-                  <Link href="/agreement">рекламной рассылки</Link>
+                  <Link href="/agreement">рекламных рассылок</Link>
                 </strong>
               </span>
             </label>

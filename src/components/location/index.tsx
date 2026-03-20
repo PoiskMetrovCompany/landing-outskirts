@@ -32,8 +32,8 @@ const Location = () => {
             <div className={styles.location__group}>
               <p className={styles.location__label}>Жилой комплекс</p>
               <h3 className={styles.location__value}>
-                г. Новосибирск, <br />
-                1-Ая Чулымская д. 116
+                г. новосибирск, <br />
+                поселок Садовый, ул. Околица.
               </h3>
             </div>
 
