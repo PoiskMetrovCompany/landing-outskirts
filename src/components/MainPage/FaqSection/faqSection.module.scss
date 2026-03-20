@@ -1,0 +1,718 @@
+@import "@/app/mixins.scss";
+
+.faqSection {
+  width: 100%;
+
+  &__title {
+    margin-bottom: 64px;
+    color: var(--Black-100);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.56px;
+    text-transform: uppercase;
+
+    @include screen-lg {
+      margin-bottom: 56px;
+      font-size: 48px;
+      letter-spacing: -0.48px;
+    }
+
+    @include screen-md {
+      margin-bottom: 48px;
+      font-size: 40px;
+      letter-spacing: -0.4px;
+    }
+
+    @include screen-sm {
+      margin-bottom: 48px;
+      font-size: 40px;
+      letter-spacing: -0.4px;
+    }
+
+    @include screen-xss {
+      margin-bottom: 24px;
+      font-size: 24px;
+      letter-spacing: -0.24px;
+    }
+  }
+
+  &__content {
+    display: grid;
+    gap: 40px;
+    width: 100%;
+    align-items: start;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    grid-template-areas:
+      "accordion promo"
+      "showMore .";
+
+    @include screen-lg {
+      gap: 32px;
+      grid-template-columns: 952px 296px;
+    }
+
+    @include screen-md {
+      gap: 32px;
+      grid-template-columns: 621px 291px;
+    }
+
+    @include screen-sm {
+      gap: 32px;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        "accordion"
+        "showMore"
+        "promo";
+    }
+
+    @include screen-xss {
+      gap: 16px;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        "accordion"
+        "showMore"
+        "promo";
+    }
+  }
+
+  &__accordion {
+    grid-area: accordion;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 24px;
+
+    @include screen-lg {
+      width: 952px;
+      flex: none;
+      gap: 20px;
+    }
+
+    @include screen-md {
+      width: 621px;
+      flex: none;
+      gap: 20px;
+    }
+
+    @include screen-sm {
+      width: 100%;
+      flex: none;
+      gap: 20px;
+    }
+
+    @include screen-xss {
+      width: 100%;
+      flex: none;
+      gap: 12px;
+    }
+  }
+
+  &__item {
+    border-radius: 48px;
+    background-color: var(--White-White-100);
+    overflow: hidden;
+
+    @include screen-lg {
+      border-radius: 40px;
+    }
+
+    @include screen-md {
+      border-radius: 32px;
+    }
+
+    @include screen-sm {
+      border-radius: 32px;
+    }
+
+    @include screen-xss {
+      border-radius: 24px;
+    }
+
+    &[data-state="open"] {
+      .faqSection__arrow {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  &__header {
+    all: unset;
+    display: block;
+  }
+
+  &__trigger {
+    all: unset;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 112px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    cursor: pointer;
+
+    @include screen-lg {
+      min-height: 85px;
+      padding: 32px;
+      gap: 24px;
+    }
+
+    @include screen-md {
+      min-height: 69px;
+      padding: 24px;
+      gap: 16px;
+    }
+
+    @include screen-sm {
+      min-height: 69px;
+      padding: 24px;
+      gap: 24px;
+    }
+
+    @include screen-xss {
+      min-height: 76px;
+      padding: 20px 16px;
+      gap: 12px;
+    }
+  }
+
+  &__questionRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+
+    @include screen-lg {
+      align-items: center;
+      gap: 8px;
+    }
+
+    @include screen-md {
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    @include screen-sm {
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    @include screen-xss {
+      align-items: flex-start;
+      gap: 2px;
+    }
+  }
+
+  &__number {
+    width: 24px;
+    flex-shrink: 0;
+    color: var(--Black-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+
+    @include screen-lg {
+      font-size: 16px;
+    }
+
+    @include screen-md {
+      font-size: 16px;
+    }
+
+    @include screen-sm {
+      font-size: 16px;
+    }
+
+    @include screen-xss {
+      width: 16px;
+      font-size: 14px;
+    }
+  }
+
+  &__question {
+    color: var(--Black-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+
+    @include screen-lg {
+      font-size: 16px;
+    }
+
+    @include screen-md {
+      font-size: 16px;
+    }
+
+    @include screen-sm {
+      font-size: 16px;
+    }
+
+    @include screen-xss {
+      font-size: 14px;
+    }
+  }
+
+  &__arrow {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    transform: rotate(0deg);
+    transition: transform 240ms ease;
+
+    @include screen-lg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-md {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-sm {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-xss {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__arrowIconWrap {
+    width: 24px;
+    height: 24px;
+
+    @include screen-lg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-md {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-sm {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-xss {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__arrowIcon {
+    object-fit: contain;
+  }
+
+  &__answerContent {
+    overflow: hidden;
+    padding: 0 40px 40px 76px;
+    margin-top: -24px;
+
+    @include screen-lg {
+      padding: 0 32px 32px 64px;
+      margin-top: -16px;
+    }
+
+    @include screen-md {
+      padding: 0 24px 24px 52px;
+      margin-top: -8px;
+    }
+
+    @include screen-sm {
+      padding: 0 24px 24px 52px;
+      margin-top: -8px;
+    }
+
+    @include screen-xss {
+      padding: 0 16px 20px 34px;
+      margin-top: -6px;
+    }
+
+    &[data-state="open"] {
+      animation: faqSectionSlideDown 240ms ease;
+    }
+
+    &[data-state="closed"] {
+      animation: faqSectionSlideUp 220ms ease;
+    }
+  }
+
+  &__answer {
+    color: var(--Grey-Grey-900);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 1026px;
+
+    @include screen-lg {
+      max-width: 856px;
+      font-size: 14px;
+    }
+
+    @include screen-md {
+      max-width: 545px;
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      max-width: 592px;
+      font-size: 14px;
+    }
+
+    @include screen-xss {
+      max-width: 296px;
+      font-size: 13px;
+    }
+  }
+
+  &__promoCard {
+    grid-area: promo;
+    position: relative;
+    width: 400px;
+    height: 520px;
+    border-radius: 64px;
+    background-color: var(--Yellow-100);
+    overflow: hidden;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+
+    @include screen-lg {
+      width: 296px;
+      height: 400px;
+      border-radius: 40px;
+      padding: 40px;
+      flex: none;
+    }
+
+    @include screen-md {
+      width: 291px;
+      height: 378px;
+      border-radius: 32px;
+      padding: 32px;
+      flex: none;
+    }
+
+    @include screen-sm {
+      width: 100%;
+      height: 153px;
+      border-radius: 32px;
+      padding: 32px;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 32px;
+    }
+
+    @include screen-xss {
+      width: 100%;
+      height: 198px;
+      border-radius: 32px;
+      padding: 24px 32px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 32px;
+    }
+  }
+
+  &__promoIconWrap {
+    position: absolute;
+    top: 188px;
+    right: -9px;
+    width: 205px;
+    height: 306px;
+    pointer-events: none;
+
+    @include screen-lg {
+      top: 152px;
+      right: -10px;
+      width: 159px;
+      height: 237px;
+    }
+
+    @include screen-md {
+      top: 143px;
+      right: -10px;
+      width: 144px;
+      height: 215px;
+    }
+
+    @include screen-sm {
+      top: -15px;
+      left: 282px;
+      right: auto;
+      width: 124px;
+      height: 184px;
+    }
+
+    @include screen-xss {
+      top: auto;
+      bottom: -11px;
+      left: auto;
+      right: -4px;
+      width: 105px;
+      height: 156px;
+    }
+  }
+
+  &__promoIconWrapDesktop {
+    display: block;
+
+    @include screen-sm {
+      display: none;
+    }
+
+    @include screen-xss {
+      display: block;
+    }
+  }
+
+  &__promoIconWrapMobile {
+    display: none;
+
+    @include screen-sm {
+      display: block;
+    }
+
+    @include screen-xss {
+      display: none;
+    }
+  }
+
+  &__promoIconBox {
+    width: 205px;
+    height: 306px;
+
+    @include screen-lg {
+      width: 159px;
+      height: 237px;
+    }
+
+    @include screen-md {
+      width: 144px;
+      height: 215px;
+    }
+
+    @include screen-sm {
+      width: 124px;
+      height: 184px;
+    }
+
+    @include screen-xss {
+      width: 105px;
+      height: 156px;
+    }
+  }
+
+  &__promoIcon {
+    object-fit: contain;
+  }
+
+  &__promoText {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include screen-lg {
+      gap: 20px;
+    }
+
+    @include screen-md {
+      gap: 16px;
+    }
+
+    @include screen-sm {
+      flex: 1;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    @include screen-xss {
+      flex: none;
+      gap: 12px;
+      width: 100%;
+    }
+  }
+
+  &__promoTitle {
+    color: var(--White-White-100);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.32px;
+    text-transform: uppercase;
+
+    @include screen-lg {
+      font-size: 24px;
+      letter-spacing: -0.24px;
+    }
+
+    @include screen-md {
+      font-size: 24px;
+      letter-spacing: -0.24px;
+    }
+
+    @include screen-sm {
+      font-size: 24px;
+      letter-spacing: -0.24px;
+    }
+
+    @include screen-xss {
+      font-size: 20px;
+      letter-spacing: -0.2px;
+    }
+  }
+
+  &__promoDescription {
+    color: var(--White-White-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 232px;
+    opacity: 0.8;
+
+    @include screen-lg {
+      max-width: 216px;
+      font-size: 14px;
+    }
+
+    @include screen-md {
+      max-width: 227px;
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      max-width: 460px;
+      font-size: 14px;
+    }
+
+    @include screen-xss {
+      max-width: 264px;
+      font-size: 13px;
+    }
+  }
+
+  &__promoButtonWrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+
+    @include screen-sm {
+      width: auto;
+    }
+
+    @include screen-xss {
+      width: auto;
+    }
+  }
+
+  &__promoButton {
+    width: 100%;
+    min-height: 56px;
+    border-radius: 40px;
+    padding: 17px 32px;
+    color: var(--Black-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+
+    @include screen-lg {
+      min-height: 48px;
+      padding: 13.5px 32px;
+      font-size: 14px;
+    }
+
+    @include screen-md {
+      min-height: 48px;
+      padding: 13.5px 32px;
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      width: 164px;
+      min-height: 48px;
+      padding: 13.5px 32px;
+      font-size: 14px;
+    }
+
+    @include screen-xss {
+      width: 126px;
+      min-height: 40px;
+      padding: 11px 20px;
+      font-size: 12px;
+    }
+  }
+
+  &__showMoreButton {
+    grid-area: showMore;
+    background: transparent;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    cursor: pointer;
+
+    @include screen-lg {
+      padding-bottom: 8px;
+      font-size: 14px;
+    }
+
+    @include screen-md {
+      padding-bottom: 8px;
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      padding-bottom: 8px;
+      font-size: 14px;
+    }
+
+    @include screen-xss {
+      padding-bottom: 8px;
+      font-size: 13px;
+    }
+  }
+}
+
+@keyframes faqSectionSlideDown {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes faqSectionSlideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,239 @@
+@import "@/app/mixins.scss";
+
+.page {
+  gap: 0;
+  padding-top: 64px !important;
+  padding-bottom: 120px !important;
+
+  @include screen-lg {
+    padding-top: 56px !important;
+    padding-bottom: 96px !important;
+  }
+
+  @include screen-md {
+    padding-top: 48px !important;
+    padding-bottom: 80px !important;
+  }
+
+  @include screen-sm {
+    padding-top: 48px !important;
+    padding-bottom: 64px !important;
+  }
+
+  @include screen-xss {
+    padding-top: 24px !important;
+    padding-bottom: 64px !important;
+  }
+}
+
+.policy {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  color: var(--Black-100);
+
+  @include screen-lg {
+    gap: 32px;
+  }
+
+  @include screen-md {
+    gap: 24px;
+  }
+
+  @include screen-sm {
+    gap: 24px;
+  }
+
+  @include screen-xss {
+    gap: 16px;
+  }
+}
+
+.title {
+  color: var(--Black-100);
+  font-family: var(--font-oswald), Arial, Helvetica, sans-serif;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.44px;
+  text-transform: uppercase;
+
+  @include screen-lg {
+    font-size: 36px;
+    letter-spacing: -0.36px;
+  }
+
+  @include screen-md {
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  @include screen-sm {
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  @include screen-xss {
+    font-size: 20px;
+    letter-spacing: -0.2px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  font-family: var(--font-onest), Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+
+  @include screen-lg {
+    font-size: 15px;
+  }
+
+  @include screen-md {
+    font-size: 15px;
+  }
+
+  @include screen-sm {
+    font-size: 15px;
+  }
+
+  @include screen-xss {
+    gap: 16px;
+    font-size: 14px;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include screen-lg {
+    gap: 12px;
+  }
+
+  @include screen-md {
+    gap: 12px;
+  }
+
+  @include screen-sm {
+    gap: 12px;
+  }
+
+  @include screen-xss {
+    gap: 8px;
+  }
+}
+
+.sectionTitle {
+  color: var(--Black-100);
+  font-family: var(--font-onest), Arial, Helvetica, sans-serif;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.3;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+
+  @include screen-lg {
+    font-size: 22px;
+  }
+
+  @include screen-md {
+    font-size: 22px;
+  }
+
+  @include screen-sm {
+    font-size: 20px;
+  }
+
+  @include screen-xss {
+    font-size: 18px;
+  }
+}
+
+.section p,
+.section ol,
+.section ul {
+  margin: 0;
+}
+
+.section ol,
+.section ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-left: 27px;
+
+  @include screen-lg {
+    padding-left: 22px;
+  }
+
+  @include screen-md {
+    padding-left: 22px;
+  }
+
+  @include screen-sm {
+    padding-left: 20px;
+  }
+
+  @include screen-xss {
+    gap: 12px;
+    padding-left: 18px;
+  }
+}
+
+.nestedList {
+  padding-left: 54px !important;
+
+  @include screen-lg {
+    padding-left: 44px !important;
+  }
+
+  @include screen-md {
+    padding-left: 44px !important;
+  }
+
+  @include screen-sm {
+    padding-left: 40px !important;
+  }
+
+  @include screen-xss {
+    padding-left: 36px !important;
+  }
+}
+
+.section ul {
+  list-style: disc;
+  padding-left: 54px;
+
+  @include screen-lg {
+    padding-left: 44px;
+  }
+
+  @include screen-md {
+    padding-left: 44px;
+  }
+
+  @include screen-sm {
+    padding-left: 40px;
+  }
+
+  @include screen-xss {
+    padding-left: 36px;
+  }
+}
+
+.section li {
+  padding-left: 0;
+}
+
+.section a {
+  color: var(--Blue-100);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

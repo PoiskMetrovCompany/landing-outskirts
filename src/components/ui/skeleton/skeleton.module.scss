@@ -1,0 +1,18 @@
+.Skeleton {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background-color: var(--skeleton-color);
+  display: block;
+  max-width: 100%;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

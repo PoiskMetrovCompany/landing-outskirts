@@ -1,0 +1,167 @@
+@import "@/app/mixins.scss";
+
+.propertyCardSkeleton {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 48px;
+  background-color: var(--White-White-100);
+  padding: 32px;
+
+  @include screen-lg {
+    padding: 24px;
+    border-radius: 40px;
+  }
+
+  @include screen-md {
+    gap: 12px;
+    padding: 16px;
+    border-radius: 24px;
+  }
+
+  @include screen-sm {
+    gap: 12px;
+    padding: 16px;
+    border-radius: 24px;
+  }
+
+  @include screen-xss {
+    gap: 12px;
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  &__badges {
+    display: flex;
+    width: 100%;
+    min-height: 32px;
+    gap: 4px;
+    overflow: hidden;
+
+    @include screen-lg {
+      min-height: 28px;
+    }
+
+    @include screen-md {
+      min-height: 26px;
+    }
+
+    @include screen-xss {
+      min-height: 24px;
+    }
+  }
+
+  &__badge {
+    flex-shrink: 0;
+  }
+
+  &__imageWrap {
+    position: relative;
+    width: 100%;
+
+    @include screen-sm {
+      width: 144px;
+      align-self: center;
+    }
+
+    @include screen-xss {
+      width: 100%;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    background-color: color-mix(in srgb, var(--skeleton-color) 88%, white);
+
+    @include screen-lg {
+      height: 168px !important;
+    }
+
+    @include screen-md {
+      height: 123px !important;
+    }
+
+    @include screen-sm {
+      width: 144px !important;
+      height: 123px !important;
+      align-self: center;
+    }
+
+    @include screen-xss {
+      width: 100% !important;
+      height: 140px !important;
+    }
+  }
+
+  &__imageAccent {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: color-mix(in srgb, var(--skeleton-color) 72%, white);
+    transform: translate(-50%, -50%);
+
+    @include screen-sm {
+      width: 92px !important;
+      height: 86px !important;
+    }
+
+    @include screen-xss {
+      width: 58% !important;
+      height: 72% !important;
+    }
+  }
+
+  &__content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__title {
+    @include screen-lg {
+      height: 36px !important;
+    }
+
+    @include screen-md {
+      height: 31px !important;
+    }
+
+    @include screen-xss {
+      height: 26px !important;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+
+  &__descriptionItem {
+    display: inline-flex;
+    align-items: center;
+
+    &:not(:last-child)::after {
+      content: "";
+      width: 4px;
+      height: 4px;
+      margin: 0 8px;
+      border-radius: 50%;
+      background-color: color-mix(
+        in srgb,
+        var(--skeleton-color) 85%,
+        var(--Grey-Grey-700)
+      );
+    }
+  }
+
+  &__button {
+    width: 100%;
+
+    @include screen-lg {
+      height: 40px !important;
+    }
+  }
+}

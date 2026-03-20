@@ -1,0 +1,339 @@
+@import "@/app/mixins.scss";
+
+.residentsStories {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 64px;
+
+  @include screen-lg {
+    gap: 56px;
+  }
+
+  @include screen-md {
+    gap: 48px;
+  }
+
+  @include screen-sm {
+    gap: 48px;
+  }
+
+  @include screen-xss {
+    gap: 24px;
+  }
+
+  &__header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    @include screen-lg {
+      gap: 20px;
+    }
+
+    @include screen-md {
+      gap: 16px;
+    }
+
+    @include screen-sm {
+      gap: 16px;
+    }
+
+    @include screen-xss {
+      gap: 0;
+    }
+  }
+
+  &__title {
+    color: var(--Black-100);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    @include screen-lg {
+      font-size: 48px;
+    }
+
+    @include screen-md {
+      font-size: 40px;
+    }
+
+    @include screen-sm {
+      font-size: 40px;
+    }
+
+    @include screen-xss {
+      font-size: 24px;
+    }
+  }
+
+  &__controls {
+    align-items: center;
+    gap: 24px;
+    display: flex;
+
+    @include screen-lg {
+      gap: 20px;
+    }
+
+    @include screen-md {
+      gap: 16px;
+    }
+
+    @include screen-sm {
+      gap: 16px;
+    }
+
+    @include screen-xss {
+      display: none;
+    }
+  }
+
+  &__arrows {
+    display: none;
+    align-items: center;
+    gap: 16px;
+
+    @include screen-lg {
+      gap: 12px;
+    }
+
+    @include screen-md {
+      gap: 12px;
+      display: flex;
+    }
+
+    @include screen-sm {
+      gap: 12px;
+      display: flex;
+    }
+  }
+
+  &__arrowButton {
+    width: 64px;
+    height: 64px;
+    border-radius: 40px;
+    padding: 18px;
+
+    @include screen-lg {
+      width: 56px;
+      height: 56px;
+      padding: 16px;
+    }
+
+    @include screen-md {
+      width: 48px;
+      height: 48px;
+      padding: 14px;
+    }
+
+    @include screen-sm {
+      width: 48px;
+      height: 48px;
+      padding: 14px;
+    }
+  }
+
+  &__arrowIcon {
+    width: 28px;
+    height: 28px;
+
+    @include screen-lg {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include screen-md {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-sm {
+      width: 20px;
+      height: 20px;
+    }
+
+    &--prev {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__arrowIconImage {
+    object-fit: contain;
+  }
+
+  &__actionButton {
+    height: 64px;
+    border-radius: 40px;
+    padding: 17px 32px;
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    white-space: nowrap;
+
+    @include screen-lg {
+      height: 56px;
+      padding: 17px 24px;
+      font-size: 14px;
+    }
+
+    @include screen-md {
+      height: 48px;
+      padding: 17px 20px;
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      height: 48px;
+      padding: 17px 20px;
+      font-size: 13px;
+    }
+
+    @include screen-xss {
+      display: none;
+    }
+  }
+
+  &__slider {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    overflow: hidden;
+
+    @include screen-xss {
+      width: calc(100% + 24px);
+      margin-left: -8px;
+      overflow: visible;
+      padding-left: 8px;
+    }
+  }
+
+  &__slide {
+    width: 396px;
+
+    @include screen-lg {
+      width: auto;
+    }
+
+    @include screen-md {
+      width: auto;
+    }
+
+    @include screen-sm {
+      width: auto;
+    }
+
+    @include screen-xss {
+      width: auto;
+    }
+  }
+
+  &__column {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 32px;
+
+    @include screen-lg {
+      gap: 24px;
+      width: 304px;
+    }
+
+    @include screen-md {
+      gap: 16px;
+      width: 303px;
+    }
+
+    @include screen-sm {
+      gap: 16px;
+      width: 218px;
+    }
+
+    @include screen-xss {
+      gap: 12px;
+      width: 250px;
+    }
+  }
+
+  &__card {
+    width: 100%;
+    border-radius: 32px;
+    background-color: var(--White-White-100);
+    padding: 16px;
+
+    @include screen-lg {
+      border-radius: 28px;
+      padding: 12px;
+    }
+
+    @include screen-md {
+      border-radius: 24px;
+      padding: 12px;
+    }
+
+    @include screen-sm {
+      border-radius: 24px;
+      padding: 12px;
+    }
+
+    @include screen-xss {
+      border-radius: 16px;
+      padding: 4px;
+    }
+  }
+
+  &__imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: var(--review-aspect-ratio);
+    overflow: hidden;
+  }
+
+  &__image {
+    object-fit: cover;
+  }
+
+  &__mobileActionButton {
+    display: none;
+
+    @include screen-xss {
+      display: flex;
+      width: 100%;
+      min-height: 40px;
+      border-radius: 40px;
+      padding: 14px 16px;
+      font-family: var(--font-onest), sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }
+
+  &__slide:nth-child(even) &__column {
+    @include screen-lg {
+      width: 305px;
+    }
+
+    @include screen-md {
+      width: 306px;
+    }
+
+    @include screen-sm {
+      width: 220px;
+    }
+
+    @include screen-xss {
+      width: 250px;
+    }
+  }
+}

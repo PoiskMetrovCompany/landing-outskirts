@@ -1,0 +1,31 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 120px;
+  gap: 160px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: var(--Gray-bg-100);
+  margin-top: var(--header-height);
+
+  @include screen-lg {
+    gap: 120px;
+    padding: 0 80px;
+  }
+
+  @include screen-md {
+    gap: 80px;
+    padding: 0 40px;
+  }
+
+  @include screen-sm {
+    gap: 64px;
+    padding: 0 40px;
+  }
+
+  @include screen-xss {
+    gap: 64px;
+    padding: 0 16px;
+  }
+}

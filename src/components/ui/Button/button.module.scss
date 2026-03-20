@@ -1,0 +1,231 @@
+@use "../../../app/mixins.scss" as mixins;
+
+@mixin adaptive-button-size(
+  $height,
+  $padding-inline,
+  $padding-block,
+  $radius,
+  $font-size,
+  $width: null
+) {
+  height: $height;
+  padding: $padding-block $padding-inline;
+  border-radius: $radius;
+  font-size: $font-size;
+  @if $width {
+    width: $width;
+  }
+}
+
+@mixin adaptive-button-size-class($class-prefix, $size-name, $values...) {
+  &.#{$class-prefix}-#{$size-name} {
+    @include adaptive-button-size($values...);
+  }
+}
+
+@mixin adaptive-button-size-group($class-prefix, $l, $m, $s, $xs) {
+  @include adaptive-button-size-class($class-prefix, "L", $l...);
+  @include adaptive-button-size-class($class-prefix, "M", $m...);
+  @include adaptive-button-size-class($class-prefix, "S", $s...);
+  @include adaptive-button-size-class($class-prefix, "XS", $xs...);
+}
+
+@mixin adaptive-button-size-responsive-group($l, $m, $s, $xs) {
+  @include adaptive-button-size-group("sizeXl", $l, $m, $s, $xs);
+
+  @include mixins.screen-lg {
+    @include adaptive-button-size-group("sizeLg", $l, $m, $s, $xs);
+  }
+
+  @include mixins.screen-md {
+    @include adaptive-button-size-group("sizeMd", $l, $m, $s, $xs);
+  }
+
+  @include mixins.screen-sm {
+    @include adaptive-button-size-group("sizeSm", $l, $m, $s, $xs);
+  }
+
+  @include mixins.screen-xss {
+    @include adaptive-button-size-group("sizeSm", $l, $m, $s, $xs);
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  outline: none;
+
+  &.width-full {
+    width: 100%;
+  }
+
+  &.width-content {
+    width: fit-content;
+  }
+
+  // Colors mapping from globals.css variables
+  &.color-white {
+    background-color: var(--White-White-100);
+    color: var(--Black-100);
+
+    &:hover {
+      > * {
+        filter: var(--hover-svg-filter);
+      }
+    }
+
+    &:disabled {
+      > * {
+        filter: var(--disabled-svg-filter);
+      }
+    }
+  }
+  &.color-black {
+    background-color: var(--Black-100);
+    color: var(--White-White-100);
+
+    &:hover {
+      color: var(--White-white-10080, rgba(255, 255, 255, 0.8));
+    }
+
+    &:disabled {
+      color: var(--Grey-Grey-700, #877e7e);
+    }
+  }
+  &.color-gray {
+    background: var(--white-white-10020, rgba(255, 255, 255, 0.2));
+    color: var(--White-White-100, #fff);
+
+    &:hover {
+      color: var(--white-white-10080, rgba(255, 255, 255, 0.8));
+    }
+
+    &:disabled {
+      color: var(--white-white-10050, rgba(255, 255, 255, 0.5));
+    }
+  }
+  &.color-gray-2 {
+    background: var(--Grey-Grey-200, #f1eded);
+    color: var(---Black-100, #20201f);
+
+    &:hover {
+      color: var(--Grey-Grey-900, #504848);
+    }
+
+    &:disabled {
+      color: var(--Grey-Grey-700, #877e7e);
+    }
+  }
+  &.color-yellow {
+    background-color: var(--Yellow-100);
+    color: var(--White-White-100);
+
+    &:hover {
+      background-color: var(--Yellow-200);
+    }
+
+    &:disabled {
+      color: var(--White-white-10050, rgba(255, 255, 255, 0.5));
+    }
+  }
+
+  &.color-yellow-gray {
+    background-color: var(--Yellow-100);
+    color: var(--White-White-100);
+
+    &:hover {
+      background-color: var(--Yellow-200);
+    }
+
+    &:disabled {
+      background: var(--Grey-Grey-200, #f1eded);
+      color: var(--Grey-Grey-700, #877e7e);
+    }
+  }
+  &.color-begie {
+    background-color: var(--Begie-100);
+    color: var(--Black-100);
+  }
+  &.color-blue {
+    background-color: var(--Blue-100);
+    color: var(--White-White-100);
+  }
+  &.color-transparent {
+    background-color: transparent;
+    color: var(--White-White-100);
+  }
+  &.color-underline {
+    background-color: transparent;
+    color: var(--Black-100);
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    padding: 0;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &.adaptive {
+    font-family: var(--font-onest), sans-serif;
+    white-space: nowrap;
+
+    &.type-1 {
+      @include adaptive-button-size-responsive-group(
+        (56px, 17px, 32px, 40px, 16px),
+        (48px, 17px, 24px, 40px, 14px),
+        (40px, 9.5px, 20px, 40px, 14px),
+        (40px, 10px, 16px, 28px, 13px)
+      );
+    }
+
+    &.type-2 {
+      @include adaptive-button-size-responsive-group(
+        (64px, 17px, 32px, 40px, 16px),
+        (56px, 17px, 24px, 40px, 14px),
+        (48px, 17px, 20px, 40px, 14px),
+        (40px, 10px, 20px, 40px, 13px)
+      );
+    }
+
+    &.type-3 {
+      @include adaptive-button-size-responsive-group(
+        (48px, 17px, 24px, 40px, 16px),
+        (40px, 9.5px, 20px, 40px, 14px),
+        (40px, 9.5px, 20px, 40px, 14px),
+        (40px, 10px, 16px, 40px, 13px)
+      );
+    }
+
+    &.type-4 {
+      @include adaptive-button-size-responsive-group(
+        (48px, 17px, 32px, 40px, 16px),
+        (40px, 9.5px, 24px, 40px, 14px),
+        (40px, 9.5px, 20px, 40px, 14px),
+        (40px, 10px, 20px, 40px, 13px)
+      );
+    }
+
+    &.type-5 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include adaptive-button-size-responsive-group(
+        (64px, 0px, 0px, 40px, 14px, 64px),
+        (56px, 0px, 0px, 40px, 13px, 56px),
+        (48px, 0px, 0px, 40px, 12px, 48px),
+        (40px, 0px, 0px, 40px, 11px, 40px)
+      );
+    }
+  }
+}

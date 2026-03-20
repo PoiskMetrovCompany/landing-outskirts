@@ -1,0 +1,338 @@
+@import "@/app/mixins.scss";
+
+// ─── Modal overlay & content ───────────────────────────────────────────────────
+
+.modal {
+  &__overlay {
+    animation: modalOverlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    background-color: var(--Black-100-60);
+    inset: 0;
+    position: fixed;
+    z-index: 1000;
+  }
+
+  &__content {
+    animation: modalContentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    background: var(--White-White-100);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    inset: 0;
+    max-height: none;
+    max-width: none;
+    overflow: hidden;
+    position: fixed;
+    width: 100vw;
+    z-index: 1001;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    padding: 0 24px 24px;
+
+    @include screen-xss {
+      padding: 0 16px 16px;
+    }
+  }
+
+  // ─── Header ─────────────────────────────────────────────────────────────────
+
+  &__header {
+    align-items: center;
+    border-bottom: 1px solid var(--Gray-Border-color);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    margin-left: -24px;
+    margin-right: -24px;
+    padding: 16px 24px;
+    width: calc(100% + 48px);
+
+    @include screen-xss {
+      margin-left: -16px;
+      margin-right: -16px;
+      padding: 16px;
+      width: calc(100% + 32px);
+    }
+  }
+
+  &__title {
+    grid-column: 2;
+    justify-self: center;
+    color: var(--Black-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0;
+
+    @include screen-xss {
+      font-size: 18px;
+    }
+  }
+
+  &__close {
+    align-items: center;
+    background: transparent;
+    grid-column: 3;
+    justify-self: end;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    padding: 0;
+    width: 40px;
+    background-color: var( --Begie-100);
+
+    &:focus {
+      outline: none;
+    }
+    @include screen-xss {
+      width: 32px;
+      height: 32px;;
+    }
+  }
+
+  &__closeIcon {
+    width: 20px;
+    height: 20px;
+    color: var(--Black-100);
+    @include screen-xss {
+      width: 18px;
+      height: 18px;
+    }
+
+  }
+
+  // ─── Content area ───────────────────────────────────────────────────────────
+
+  &__contentArea {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-top: 32px;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--Grey-Grey-400, var(--Grey-Grey-500));
+      border-radius: 4px;
+    }
+    @include screen-xss {
+      margin-top: 20px;
+    }
+  }
+
+  // ─── Sections ────────────────────────────────────────────────────────────────
+
+  &__section {
+    display: flex;  
+    gap: 12px;
+    margin-bottom: 32px;
+    gap: 80px;
+    justify-content: space-between;
+    @include screen-xss {
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+  }
+
+  &__sectionLabel {
+    font-family: var(--font-onest), sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    width: 171px;
+      
+  }
+
+  &__sectionOptions {
+    display: flex;
+    flex-wrap: wrap;
+    width: 437px;
+    gap: 8px;
+    @include screen-xss {
+      width: 100%;
+    }
+  }
+
+  // ─── Filter buttons (pill style) ────────────────────────────────────────────
+
+  &__filterButton {
+    align-items: center;
+    background: transparent;
+    border: 1px solid var(--Gray-Border-color);
+    border-radius: 12px;
+    color: var(--Black-100);
+    cursor: pointer;
+    font-family: var(--font-onest), sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    height: 40px;
+    line-height: 1;
+    padding: 0 16px;
+    transition: all 0.2s ease;
+
+
+    &--active {
+      background: var(--yellow-active);
+      border-color: var(--yellow-border-color);
+      color: var(--yellow-border-color);
+    }
+  }
+
+  // ─── Range inputs ────────────────────────────────────────────────────────────
+
+  &__rangeRow {
+    display: flex;
+    gap: 8px;
+    width: 437px;
+    @include screen-xss {
+      width: 100%;
+    }
+  }
+
+  &__rangeField {
+    align-items: center;
+    background: var(--color-border-gray);
+    border: 1px solid var(--Gray-Border-color);
+    border-radius: 12px;
+    display: flex;
+    flex: 1;
+    gap: 8px;
+    height: 40px;
+    padding: 0 16px;
+
+    @include screen-xss {
+      height: 44px;
+      padding: 0 12px;
+    }
+  }
+
+  &__rangeInput {
+    background: transparent;
+    border: none;
+    color: var(--Black-100);
+    flex: 1;
+    font-family: var(--font-onest), sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    min-width: 0;
+    outline: none;
+
+    width: 50%;
+    &::placeholder {
+      color: var(--Grey-Grey-600);
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+    }
+  }
+
+  &__rangeUnit {
+    flex-shrink: 0;
+    font-family: var(--font-onest), sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  // ─── Floor block (range + options) ──────────────────────────────────────────
+
+  &__floorBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  // ─── Footer ─────────────────────────────────────────────────────────────────
+
+  &__footer {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 20px;
+
+    @include screen-xss {
+      gap: 8px;
+      padding-top: 16px;
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__resetButton {
+    flex: 1;
+    height: 48px;
+    border-radius: 24px;
+
+    @include screen-xss {
+      flex: 0 0 auto;
+      height: 40px;
+      width: 100%;
+    }
+  }
+
+  &__resetCount {
+    align-items: center;
+    background: var(--Orange-100);
+    border-radius: 50%;
+    color: var(--White-White-100);
+    display: inline-flex;
+    font-family: var(--font-onest), sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    height: 22px;
+    justify-content: center;
+    margin-left: 6px;
+    min-width: 22px;
+  }
+
+  &__applyButton {
+    flex: 1;
+    height: 48px;
+    border-radius: 24px;
+
+    @include screen-xss {
+      flex: 0 0 auto;
+      height: 40px;
+      width: 100%;
+    }
+  }
+}
+
+@keyframes modalOverlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalContentShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+

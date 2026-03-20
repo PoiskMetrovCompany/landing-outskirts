@@ -1,0 +1,127 @@
+@import "@/app/mixins.scss";
+
+.page {
+  gap: 0;
+  padding-top: 64px !important;
+  padding-bottom: 120px !important;
+
+  @include screen-lg {
+    padding-top: 56px !important;
+    padding-bottom: 0 !important;
+  }
+
+  @include screen-md {
+    padding-top: 48px !important;
+    padding-bottom: 0 !important;
+  }
+
+  @include screen-sm {
+    padding-top: 48px !important;
+    padding-bottom: 0 !important;
+  }
+
+  @include screen-xss {
+    padding-top: 24px !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+.agreement {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  color: var(--Black-100);
+
+  @include screen-lg {
+    gap: 32px;
+  }
+
+  @include screen-md {
+    gap: 24px;
+  }
+
+  @include screen-sm {
+    gap: 24px;
+  }
+
+  @include screen-xss {
+    gap: 16px;
+  }
+
+  &__title {
+    color: var(--Black-100);
+    font-family: var(--font-oswald), Arial, Helvetica, sans-serif;
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.44px;
+    text-transform: uppercase;
+
+    @include screen-lg {
+      font-size: 36px;
+      letter-spacing: -0.36px;
+    }
+
+    @include screen-md {
+      font-size: 32px;
+      letter-spacing: -0.32px;
+    }
+
+    @include screen-sm {
+      font-size: 32px;
+      letter-spacing: -0.32px;
+      max-width: 75%;
+    }
+
+    @include screen-xss {
+      font-size: 20px;
+      letter-spacing: -0.2px;
+      max-width: 95%;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    font-family: var(--font-onest), Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--Black-100);
+    gap: 44px;
+
+    @include screen-lg {
+      gap: 32px;
+      font-size: 15px;
+    }
+
+    @include screen-md {
+      font-size: 15px;
+      gap: 32px;
+    }
+
+    @include screen-sm {
+      font-size: 15px;
+      gap: 32px;
+    }
+
+    @include screen-xss {
+      gap: 32px;
+      font-size: 14px;
+    }
+  }
+
+  &__content p {
+    margin: 0;
+  }
+
+  &__content a {
+    color: var(--Blue-100);
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 2px;
+  }
+}

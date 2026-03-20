@@ -1,0 +1,371 @@
+@import "@/app/mixins.scss";
+
+.bestOffers {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 64px;
+
+  @include screen-lg {
+    gap: 56px;
+  }
+
+  @include screen-md {
+    gap: 40px;
+  }
+
+  @include screen-xss {
+    gap: 24px;
+  }
+
+  @include screen-sm {
+    gap: 40px;
+  }
+
+  &__header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    @include screen-md {
+      align-items: flex-start;
+    }
+
+    @include screen-sm {
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 24px;
+    }
+
+    @include screen-xss {
+      width: 100%;
+      gap: 16px;
+    }
+  }
+
+  &__headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    @include screen-lg {
+      gap: 32px;
+    }
+
+    @include screen-md {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    @include screen-sm {
+      display: contents;
+    }
+
+    @include screen-xss {
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+
+  &__titleWrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    @include screen-sm {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    @include screen-xss {
+      justify-content: flex-start;
+    }
+  }
+
+  &__title {
+    color: var(--Black-100);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    @include screen-lg {
+      font-size: 48px;
+    }
+
+    @include screen-md {
+      font-size: 40px;
+    }
+
+    @include screen-sm {
+      font-size: 40px;
+    }
+
+    @include screen-xss {
+      font-size: 24px;
+    }
+  }
+
+  &__tabs {
+    display: inline-flex;
+    height: 64px;
+    align-items: center;
+    gap: 32px;
+    border-radius: 80px;
+    background-color: var(--White-White-100);
+    padding: 20px 32px;
+
+    @include screen-lg {
+      height: 56px;
+      gap: 24px;
+      padding: 0 24px;
+    }
+
+    @include screen-md {
+      height: 48px;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    @include screen-sm {
+      width: auto;
+      height: 48px;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    @include screen-xss {
+      width: 100%;
+      height: 40px;
+      padding: 0 16px;
+      justify-content: space-between;
+      gap: 0;
+    }
+  }
+
+  &__tab {
+    border: none;
+    background: transparent;
+    color: #9f9898 !important;
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    @include screen-lg {
+      font-size: 16px;
+    }
+
+    @include screen-md {
+      font-size: 16px;
+    }
+
+    @include screen-sm {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    @include screen-xss {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    &--active {
+      color: var(--Yellow-100) !important;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include screen-lg {
+      gap: 20px;
+    }
+
+    @include screen-md {
+      gap: 16px;
+    }
+
+    @include screen-sm {
+      width: auto;
+      justify-content: flex-end;
+      margin-left: auto;
+      align-self: flex-start;
+    }
+
+    @include screen-xss {
+      display: none;
+    }
+  }
+
+  &__arrows {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include screen-lg {
+      gap: 12px;
+    }
+
+    @include screen-md {
+      gap: 12px;
+    }
+
+    @include screen-sm {
+      gap: 12px;
+    }
+  }
+
+  &__arrowButton {
+    width: 64px;
+    height: 64px;
+    border-radius: 40px;
+    padding: 18px;
+
+    @include screen-lg {
+      width: 56px;
+      height: 56px;
+      padding: 16px;
+    }
+
+    @include screen-md {
+      width: 48px;
+      height: 48px;
+      padding: 14px;
+    }
+
+    @include screen-sm {
+      width: 48px;
+      height: 48px;
+      padding: 14px;
+    }
+  }
+
+  &__arrowIcon {
+    width: 28px;
+    height: 28px;
+    transform: rotate(180deg);
+
+    @include screen-lg {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include screen-md {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-sm {
+      width: 20px;
+      height: 20px;
+    }
+
+    &--next {
+      transform: rotate(0deg);
+    }
+  }
+
+  &__arrowIconImage {
+    object-fit: contain;
+  }
+
+  &__catalogButton {
+    height: 64px;
+    border-radius: 40px;
+    padding: 17px 32px;
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    white-space: nowrap;
+
+    @include screen-lg {
+      height: 56px;
+      padding: 17px 24px;
+      font-size: 14px;
+    }
+
+    @include screen-md {
+      height: 48px;
+      padding: 0 20px;
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      display: none;
+    }
+  }
+
+  &__catalogButtonMobile {
+    display: none;
+
+    @include screen-sm {
+      display: flex;
+      height: 48px;
+      border-radius: 40px;
+      padding: 0 20px;
+      font-family: var(--font-onest), sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+
+    @include screen-xss {
+      display: none;
+    }
+  }
+
+  &__catalogButtonMobileBottom {
+    display: none;
+
+    @include screen-xss {
+      display: flex;
+      width: 100%;
+      height: 40px;
+      padding: 11px 20px;
+      font-size: 12px;
+      border-radius: 40px;
+    }
+  }
+
+  &__slider {
+    width: 100%;
+    overflow: hidden;
+
+    @include screen-xss {
+      overflow: visible;
+    }
+  }
+
+  &__slide {
+    height: auto;
+
+    @include screen-xss {
+      width: 250px !important;
+    }
+  }
+
+  &__card {
+    width: 100%;
+
+    @include screen-xss {
+      width: 250px;
+    }
+  }
+}

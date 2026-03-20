@@ -1,0 +1,350 @@
+@import "@/app/mixins.scss";
+
+.catalogueSection {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include screen-lg {
+    gap: 32px;
+  }
+  @include screen-md {
+    gap: 24px;
+  }
+  @include screen-sm {
+    gap: 24px;
+  }
+  @include screen-xss {
+    gap: 16px;
+  }
+
+  &__headingRow {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+
+    @include screen-xss {
+      flex-direction: column-reverse;
+      align-items: start;
+      gap: 16px;
+    }
+  }
+
+  &__heading {
+    color: var(--Black-100);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+
+    @include screen-lg {
+      font-size: 36px;
+    }
+    @include screen-md {
+      font-size: 32px;
+    }
+    @include screen-sm {
+      font-size: 32px;
+    }
+    @include screen-xss {
+      font-size: 20px;
+    }
+  }
+
+  &__backLink {
+    flex-shrink: 0;
+  }
+
+  &__backLinkContent {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    @include screen-lg {
+      gap: 4px;
+    }
+    @include screen-md {
+      gap: 4px;
+    }
+    @include screen-sm {
+      gap: 4px;
+    }
+    @include screen-xss {
+      gap: 4px;
+    }
+  }
+
+  &__backLinkIcon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+
+    @include screen-lg {
+      width: 24px;
+      height: 24px;
+    }
+    @include screen-md {
+      width: 24px;
+      height: 24px;
+    }
+    @include screen-sm {
+      width: 24px;
+      height: 24px;
+    }
+    @include screen-xss {
+      display: none;
+    }
+  }
+
+  &__backLinkIconMobile {
+    display: none;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+
+    @include screen-lg {
+      width: 24px;
+      height: 24px;
+    }
+    @include screen-md {
+      width: 24px;
+      height: 24px;
+    }
+    @include screen-sm {
+      width: 24px;
+      height: 24px;
+    }
+    @include screen-xss {
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__backLinkIconImage {
+    object-fit: contain;
+  }
+
+  &__count {
+    color: var(--Grey-Grey-700);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  &__countSkeleton {
+    background-color: color-mix(in srgb, var(--skeleton-color) 58%, #7d746d);
+  }
+
+  &__filtersBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    @include screen-lg {
+      gap: 20px;
+    }
+    @include screen-md {
+      gap: 16px;
+    }
+    @include screen-sm {
+      gap: 16px;
+    }
+  }
+
+  &__resultsBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__emptyLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include screen-lg {
+      gap: 32px;
+    }
+  }
+
+  &__emptyState {
+    border-radius: 56px;
+    background: var(--White-White-100);
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    text-align: center;
+
+    @include screen-lg {
+      height: 300px;
+      border-radius: 40px;
+    }
+
+    @include screen-md {
+      height: 300px;
+      border-radius: 32px;
+    }
+    @include screen-sm {
+      height: 300px;
+      padding: 0 80px;
+      border-radius: 32px;
+    }
+    @include screen-xss {
+      height: 300px;
+      border-radius: 24px;
+      padding: 0 32px;
+    }
+  }
+
+  &__emptyTitle {
+    color: var(--Black-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0;
+
+    @include screen-lg {
+      font-size: 22px;
+    }
+
+    @include screen-md {
+      font-size: 20px;
+    }
+    @include screen-sm {
+      font-size: 20px;
+    }
+    @include screen-xss {
+      font-size: 18px;
+    }
+  }
+
+  &__emptyText {
+    margin: 16px 0 0;
+    color: var(--Grey-Grey-700);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    @include screen-lg {
+      font-size: 16px;
+
+    }
+    @include screen-md {
+      margin-top: 12px;
+      font-size: 16px;
+    }
+    @include screen-sm {
+      font-size: 15px;
+      margin-top: 12px;
+    }
+    @include screen-xss {
+      font-size: 15px;
+      margin-top: 8px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 40px;
+    row-gap: 32px;
+    align-items: start;
+    > * {
+      min-width: 0;
+    }
+    @include screen-lg {
+      column-gap: 32px;
+      row-gap: 32px;
+    }
+    @include screen-md {
+      column-gap: 24px;
+      row-gap: 24px;
+    }
+    @include screen-sm {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-flow: row dense;
+      row-gap: 16px;
+      column-gap: 16px;
+    }
+    @include screen-xss {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      grid-auto-flow: row dense;
+      row-gap: 12px;
+      column-gap: 12px;
+    }
+  }
+
+  &__card {
+    width: 100%;
+    height: 438px;
+    @include screen-lg {
+      height: 364px;
+    }
+    @include screen-md {
+      height: 302px;
+    }
+    @include screen-sm {
+      height: 302px;
+    }
+    @include screen-xss {
+      height: 298px;
+    }
+  }
+
+  &__bannerWrapper {
+    grid-column: 1 / -1;
+
+    .personalDiscount {
+      margin-top: 0;
+    }
+  }
+
+  &__tabletOnly {
+    display: none;
+
+    @include screen-sm {
+      display: contents;
+    }
+  }
+
+  &__tabletHidden {
+    display: contents;
+
+    @include screen-sm {
+      display: none;
+    }
+  }
+
+  &__showMore {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__showMoreButton {
+    font-family: var(--font-onest), sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    @include screen-lg {
+      font-size: 14px;
+    }
+    @include screen-md {
+      font-size: 14px;
+    }
+    @include screen-sm {
+      font-size: 14px;
+    }
+    @include screen-xss {
+      font-size: 13px;
+    }
+  }
+}

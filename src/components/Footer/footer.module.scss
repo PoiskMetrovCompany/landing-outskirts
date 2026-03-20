@@ -1,0 +1,248 @@
+@import "@/app/mixins.scss";
+
+.footer {
+  width: 100%;
+  padding: 56px 120px 40px;
+  background-color: var(--Black-100);
+
+  @include screen-lg {
+    padding: 48px 80px 32px;
+  }
+
+  @include screen-md {
+    padding: 32px 40px 24px;
+  }
+
+  @include screen-sm {
+    padding: 32px 40px 24px;
+  }
+
+  @include screen-xss {
+    padding: 24px 16px 16px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 48px;
+    width: 100%;
+
+    @include screen-lg {
+      gap: 40px;
+    }
+
+    @include screen-md {
+      gap: 32px;
+    }
+
+    @include screen-sm {
+      gap: 24px;
+    }
+
+    @include screen-xss {
+      gap: 20px;
+    }
+  }
+
+  &__topRow {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+
+    @include screen-sm {
+      gap: 210px;
+      justify-content: flex-start;
+    }
+  }
+
+  &__logoLink {
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+  }
+
+  &__logoIcon {
+    width: 141px;
+    height: 48px;
+    flex-shrink: 0;
+
+    @include screen-lg {
+      width: 117px;
+      height: 40px;
+    }
+
+    @include screen-md {
+      width: 94px;
+      height: 32px;
+    }
+
+    @include screen-sm {
+      width: 94px;
+      height: 32px;
+    }
+
+    @include screen-xss {
+      width: 71px;
+      height: 24px;
+    }
+  }
+
+  &__contactsGroup {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 860px;
+
+    @include screen-lg {
+      width: 656px;
+    }
+
+    @include screen-md {
+      width: 484px;
+    }
+
+    @include screen-sm {
+      flex: 1 0 0;
+      flex-direction: column;
+      gap: 24px;
+      width: auto;
+    }
+
+    @include screen-xss {
+      flex-direction: column;
+      gap: 16px;
+      width: auto;
+    }
+  }
+
+  &__phone {
+    flex: 1 0 0;
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.4px;
+    text-transform: uppercase;
+    color: var(--White-White-100);
+    text-decoration: none;
+    white-space: nowrap;
+
+    @include screen-lg {
+      font-size: 32px;
+      letter-spacing: -0.32px;
+    }
+
+    @include screen-md {
+      font-size: 24px;
+      letter-spacing: -0.24px;
+    }
+
+    @include screen-sm {
+      font-size: 24px;
+      letter-spacing: -0.24px;
+    }
+
+    @include screen-xss {
+      flex: none;
+      font-size: 15px;
+      letter-spacing: -0.15px;
+      text-align: right;
+    }
+  }
+
+  &__ctaButton {
+    height: 48px;
+    padding: 17px 24px;
+    border-radius: 40px;
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    @include screen-lg {
+      height: 40px;
+      padding: 17px 20px;
+      font-size: 14px;
+    }
+
+    @include screen-md {
+      height: 36px;
+      padding: 17px 20px;
+      font-size: 13px;
+    }
+
+    @include screen-sm {
+      height: 36px;
+      padding: 17px 20px;
+      font-size: 13px;
+    }
+
+    @include screen-xss {
+      height: 32px;
+      padding: 17px 16px;
+      font-size: 12px;
+    }
+  }
+
+  &__bottomRow {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+    flex-direction: column;
+    padding-left: 820px;
+
+    @include screen-lg {
+      align-items: center;
+      padding-left: 624px;
+    }
+
+    @include screen-md {
+      align-items: center;
+      padding-left: 460px;
+    }
+
+    @include screen-sm {
+      align-items: center;
+      padding-left: 298px;
+    }
+
+    @include screen-xss {
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+      padding-left: 0;
+    }
+  }
+
+  &__legalLink {
+    font-family: var(--font-onest), sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--Grey-Grey-600);
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+
+    @include screen-lg {
+      font-size: 13px;
+    }
+
+    @include screen-md {
+      font-size: 13px;
+    }
+
+    @include screen-sm {
+      font-size: 13px;
+    }
+
+    @include screen-xss {
+      font-size: 12px;
+    }
+  }
+}

@@ -1,0 +1,575 @@
+@import "@/app/mixins.scss";
+.filterBar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background-color: var(--White-White-100);
+  border-radius: 80px;
+  padding: 12px;
+  padding-left: 32px;
+  height: 80px;
+  @include screen-lg {
+    padding: 8px;
+    padding-left: 20px;
+    height: 64px;
+  }
+  @include screen-md {
+    padding: 8px;
+    padding-left: 20px;
+    height: 56px;
+    gap: 12px;
+  }
+  @include screen-sm{
+    padding: 8px;
+    padding-left: 16px;
+    height: 56px;
+    gap: 12px;
+  }
+  @include screen-xss{
+    padding: 4px;
+    padding-left: 0px;
+    height: 48px;
+    gap: 8px;
+  }
+
+  &__inputs {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__desktopInputs {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__mobileControls {
+    display: none;
+  }
+
+  &__mobileSearch {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    width: 100%;
+  }
+
+  &__mobileSearchIcon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  &__mobileSearchInput {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--Black-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+
+    &::placeholder {
+      color: var(--Grey-Grey-700);
+    }
+  }
+
+  &__mobileOptions {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  &__mobileOptionsIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__dropdownWrap {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    height: 32px;
+    transition: opacity 0.15s ease;
+    @include screen-md {
+      width: 146px;
+      padding: 0 8px;
+    }
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &__triggerText {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    color: var(--Grey-Grey-700);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    transition: color 0.15s ease;
+    @include screen-lg {
+      font-size: 15px;
+    }
+    @include screen-md {
+      font-size: 15px;
+    }
+  }
+
+  &__trigger--active &__triggerText {
+    color: var(--Black-100);
+  }
+
+  &__triggerIcon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
+
+    @include screen-lg {
+      width: 16px;
+      height: 16px;
+    }
+    @include screen-md {
+      width: 16px;
+      height: 16px;
+    }
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__separator {
+    flex-shrink: 0;
+    width: 1px;
+    height: 24px;
+    background-color: var(--Grey-Grey-300);
+    margin: 0 40px;
+    @include screen-lg {
+      margin: 0 20px;
+    }
+    @include screen-md {
+      margin: 0 8px;
+    }
+  }
+
+  &__panel {
+    position: absolute;
+    top: calc(100% + 35px);
+    left: -16px;
+    z-index: 200;
+    padding: 16px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 408px;
+    width: 305px;
+    overscroll-behavior: contain;
+    background-color: var(--White-White-100);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px var(--Black-100-20);
+    animation: panelFadeIn 0.15s ease-out;
+    @include screen-lg {
+      padding: 12px 0;
+      max-height: 352px;
+      width: 232px;
+    }
+    @include screen-md {
+      width: 220px;
+      max-height: 276px;
+      padding: 8px 0;
+    }
+  }
+
+  &__rangePanel {
+    position: absolute;
+    top: calc(100% + 35px);
+    left: -16px;
+    z-index: 200;
+    padding: 8px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 72px;
+    width: 305px;
+    overscroll-behavior: contain;
+    background-color: var(--White-White-100);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px var(--Black-100-20);
+    animation: panelFadeIn 0.15s ease-out;
+    @include screen-lg {
+      padding: 8px 0;
+      max-height: 352px;
+      width: 340px;
+    }
+    @include screen-md {
+      width: 220px;
+      padding: 6px 0;
+    }
+  }
+
+  &__checkboxItem {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    padding: 6px 24px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.15s ease;
+    @include screen-lg {
+      padding: 4px 20px;
+      gap: 12px;
+    }
+    @include screen-md {
+      padding: 0px 16px;
+      gap: 8px;
+      padding-bottom: 4px;
+    }
+    &:hover,
+    &[aria-checked="true"] {
+      background-color: var(--Gray-bg-100);
+    }
+  }
+
+  &__roomCheckboxItem {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.15s ease;
+    @include screen-lg {
+      padding: 14px 20px;
+      gap: 12px;
+    }
+    @include screen-md {
+      padding: 8px 16px;
+      gap: 8px;
+    }
+    &:hover,
+    &[aria-checked="true"] {
+      background-color: var(--Gray-bg-100);
+    }
+  }
+
+  &__checkboxItemText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    @include screen-lg {
+      gap: 0;
+    }
+    @include screen-md {
+      gap: 0;
+    }
+  }
+
+  &__checkboxItemLabel {
+    color: var(--Black-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
+    white-space: nowrap;
+    @include screen-lg {
+      font-size: 14px;
+    }
+    @include screen-md {
+      font-size: 14px;
+    }
+  }
+
+  &__checkboxItemSubtitle {
+    color: var(--Grey-Grey-600);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.4;
+    @include screen-lg {
+      font-size: 13px;
+    }
+  }
+
+  // ── Custom checkbox ─────────────────────────────────────────────────────────
+
+  &__checkbox {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: 1.5px solid var(--Grey-Grey-300);
+    background-color: var(--White-White-100);
+    transition: all 0.15s ease;
+
+    @include screen-lg {
+      width: 20px;
+      height: 20px;
+    }
+    @include screen-md {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+    &--checked {
+      background-color: var(--Orange-100);
+      border-color: var(--Orange-100);
+    }
+  }
+
+  &__checkboxIcon {
+    flex-shrink: 0;
+    display: block;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+    @include screen-lg {
+      width: 12px;
+      height: 12px;
+    }
+    @include screen-md {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  // ── Range inputs ────────────────────────────────────────────────────────────
+
+  &__rangeRow {
+    display: flex;
+    gap: 8px;
+    margin: 0 8px;
+    @include screen-md {
+      margin: 0 6px;
+      gap: 6px;
+    }
+  }
+
+  &__rangeField {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    background-color: var(--Grey-Grey-100);
+    border-radius: 12px;
+    padding: 17px 24px;
+    border: 1px solid var(--color-border-gray);
+    cursor: text;
+    @include screen-lg {
+      padding: 17px 20px;
+      height: 48px;
+    }
+    @include screen-md {
+      padding: 17px 16px;
+      height: 48px;
+    }
+  }
+
+  &__rangeLabel {
+    flex-shrink: 0;
+    color: var(--Grey-Grey-700);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    pointer-events: none;
+    @include screen-lg {
+      font-size: 15px;
+    }
+    @include screen-md {
+      font-size: 15px;
+    }
+  }
+
+  &__rangeInput {
+    flex: 1;
+    width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--Black-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+
+    @include screen-lg {
+      font-size: 15px;
+    }
+    @include screen-md {
+      font-size: 15px;
+    }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+    }
+  }
+
+  &__rangeUnit {
+    flex-shrink: 0;
+    color: var(--Black-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    pointer-events: none;
+    @include screen-lg {
+      font-size: 15px;
+    }
+    @include screen-md {
+      font-size: 15px;
+    }
+  }
+
+  &__submit {
+    flex-shrink: 0;
+    height: 48px;
+    border-radius: 40px;
+    padding: 0 32px;
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    white-space: nowrap;
+    @include screen-lg {
+      padding: 0 24px;
+      font-size: 14px;
+    }
+    @include screen-md {
+      padding: 0 24px;
+      font-size: 14px;
+      height: 40px;
+    }
+  }
+  @include screen-sm {
+    gap: 12px;
+    height: 56px;
+    padding: 4px;
+
+    &__inputs {
+      height: 48px;
+      padding-left: 16px;
+      border-radius: 40px;
+    }
+
+    &__desktopInputs {
+      display: none;
+    }
+
+    &__mobileControls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    &__mobileSearch {
+      flex: 1;
+    }
+
+    &__mobileSearchIcon {
+      width: 20px;
+      height: 20px;
+    }
+
+    &__mobileSearchInput {
+      font-size: 14px;
+    }
+
+    &__submit {
+      height: 40px;
+      padding: 0 24px;
+      font-size: 14px;
+    }
+  }
+
+  @include screen-xss {
+    gap: 8px;
+    height: 48px;
+    padding: 4px;
+    padding-left: 0;
+
+    &__inputs {
+      height: 48px;
+      padding-left: 16px;
+      border-radius: 40px;
+    }
+
+    &__desktopInputs {
+      display: none;
+    }
+
+    &__mobileControls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    &__mobileSearch {
+      flex: 1;
+      gap: 8px;
+    }
+
+    &__mobileSearchIcon {
+      width: 20px;
+      height: 20px;
+    }
+
+    &__mobileSearchInput {
+      font-size: 13px;
+    }
+
+    &__submit {
+      height: 40px;
+      padding: 0 16px;
+      font-size: 13px;
+    }
+  }
+}
+
+@keyframes panelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

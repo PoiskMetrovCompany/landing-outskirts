@@ -1,0 +1,326 @@
+@import "@/app/mixins.scss";
+
+.dialog {
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--Black-100-20);
+    backdrop-filter: blur(4px);
+    z-index: 121;
+    animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &__content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 532px;
+    max-width: 90vw;
+    background: var(--White-White-100);
+    padding: 48px;
+    box-shadow: 0px 0px 26px 0px rgba(34, 32, 32, 0.1);
+    z-index: 122;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    @include screen-lg {
+      width: 466px;
+      padding: 36px;
+      gap: 20px;
+    }
+
+    @include screen-md {
+      width: 394px;
+      padding: 32px;
+      gap: 16px;
+    }
+
+    @include screen-sm {
+      top: auto;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      max-width: 100vw;
+      padding: 32px 32px 64px;
+      gap: 16px;
+    }
+
+    @include screen-xss {
+      top: auto;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      max-width: 100vw;
+      padding: 24px 24px 40px;
+      gap: 16px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+
+    @include screen-lg {
+      gap: 12px;
+    }
+
+    @include screen-md {
+      gap: 8px;
+    }
+
+    @include screen-sm {
+      gap: 8px;
+    }
+
+    @include screen-xss {
+      gap: 8px;
+    }
+  }
+
+  &__title {
+    color: var(--Black-100);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.28px;
+    text-transform: uppercase;
+    margin: 0;
+
+    @include screen-lg {
+      font-size: 24px;
+      letter-spacing: -0.24px;
+    }
+
+    @include screen-md {
+      font-size: 20px;
+      letter-spacing: -0.2px;
+    }
+
+    @include screen-sm {
+      font-size: 20px;
+      letter-spacing: -0.2px;
+    }
+
+    @include screen-xss {
+      font-size: 16px;
+      letter-spacing: -0.16px;
+    }
+  }
+
+  &__description {
+    color: var(--Grey-Grey-900);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+
+    @include screen-lg {
+      font-size: 14px;
+    }
+
+    @include screen-md {
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      font-size: 14px;
+    }
+
+    @include screen-xss {
+      font-size: 13px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include screen-lg {
+      gap: 32px;
+    }
+
+    @include screen-md {
+      gap: 24px;
+    }
+
+    @include screen-sm {
+      gap: 24px;
+    }
+
+    @include screen-xss {
+      gap: 16px;
+    }
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include screen-lg {
+      gap: 4px;
+    }
+
+    @include screen-md {
+      gap: 4px;
+    }
+
+    @include screen-sm {
+      flex-direction: row;
+      gap: 24px;
+    }
+
+    @include screen-xss {
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include screen-lg {
+      gap: 20px;
+    }
+
+    @include screen-md {
+      gap: 16px;
+    }
+
+    @include screen-sm {
+      gap: 16px;
+    }
+
+    @include screen-xss {
+      gap: 12px;
+    }
+  }
+
+  &__submitButton {
+    height: 56px;
+    font-size: 14px;
+    border-radius: 40px;
+
+    @include screen-lg {
+      height: 48px;
+      font-size: 14px;
+      border-radius: 40px;
+    }
+    @include screen-md {
+      height: 40px;
+      padding: 17px 32px;
+      border-radius: 40px;
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      height: 40px;
+      padding: 17px 32px;
+      border-radius: 40px;
+      font-size: 13px;
+    }
+
+    @include screen-xss {
+      height: 40px;
+      padding: 17px 32px;
+      border-radius: 40px;
+      font-size: 12px;
+    }
+  }
+
+  &__approval {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &__checkbox {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--Grey-Grey-500);
+    border-radius: 4px;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    &:checked {
+      border-color: var(--Grey-Grey-500);
+      background: var(--Grey-Grey-500);
+    }
+
+    &:checked::after {
+      position: absolute;
+      top: 3px;
+      left: 6px;
+      width: 5px;
+      height: 9px;
+      border-right: 1.5px solid var(--White-White-100);
+      border-bottom: 1.5px solid var(--White-White-100);
+      content: "";
+      transform: rotate(45deg);
+    }
+  }
+
+  &__approvalText {
+    color: var(--Grey-Grey-800);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    @include screen-lg {
+      font-size: 13px;
+    }
+
+    @include screen-md {
+      font-size: 13px;
+    }
+
+    @include screen-sm {
+      font-size: 13px;
+    }
+
+    @include screen-xss {
+      font-size: 12px;
+    }
+
+    strong {
+      color: var(--Black-100);
+      font-weight: 500;
+    }
+  }
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

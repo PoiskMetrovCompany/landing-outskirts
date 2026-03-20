@@ -1,0 +1,191 @@
+@import "@/app/mixins.scss";
+
+.dropdown {
+  position: relative;
+  width: 100%;
+
+  &__trigger {
+    display: flex;
+    width: 100%;
+    height: 64px;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    border-bottom: 1px solid
+      var(--dropdown-trigger-border-color, var(--Grey-Grey-300));
+    background: transparent;
+    cursor: pointer;
+    padding: 17px 0;
+
+    @include screen-lg {
+      height: 56px;
+    }
+
+    @include screen-md {
+      height: 48px;
+    }
+
+    @include screen-sm {
+      height: 48px;
+    }
+
+    @include screen-xss {
+      height: 40px;
+    }
+  }
+
+  &__triggerText {
+    color: var(--dropdown-trigger-text-color, var(--Black-100));
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+
+    @include screen-lg {
+      font-size: 14px;
+    }
+
+    @include screen-md {
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      font-size: 14px;
+    }
+
+    @include screen-xss {
+      font-size: 13px;
+    }
+  }
+
+  &__triggerIcon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
+
+    @include screen-lg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-md {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-sm {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-xss {
+      width: 16px;
+      height: 16px;
+    }
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 8px);
+    left: 0;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    border-radius: 16px;
+    background: var(--dropdown-menu-background, var(--White-White-100));
+    padding: 16px 0;
+  }
+
+  &__list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    width: 100%;
+    min-height: 48px;
+
+    @include screen-xss {
+      min-height: 40px;
+    }
+  }
+
+  &__itemButton {
+    display: flex;
+    width: 100%;
+    min-height: 48px;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 8px 20px;
+
+    @include screen-xss {
+      padding: 10px 12px;
+      min-height: 40px;
+      height: 40px;
+    }
+  }
+
+  &__itemText {
+    color: var(--dropdown-item-text-color, var(--Grey-Grey-900));
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+
+    @include screen-xss {
+      font-size: 13px;
+    }
+
+    &--selected {
+      color: var(--dropdown-item-selected-color, var(--Orange-100));
+    }
+  }
+
+  &__selectedIcon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+
+    @include screen-xss {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__scroll {
+    display: none;
+    // position: absolute;
+    // top: 16px;
+    // right: 0;
+    // bottom: 16px;
+    // width: 3px;
+    // border-radius: 24px;
+    // overflow: hidden;
+
+    // &::before {
+    //   position: absolute;
+    //   top: 0;
+    //   right: 0;
+    //   left: 0;
+    //   height: 38.89%;
+    //   border-radius: 24px;
+    //   background: var(--dropdown-scroll-thumb-color, var(--Orange-100));
+    //   content: "";
+    // }
+  }
+}

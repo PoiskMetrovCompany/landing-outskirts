@@ -1,0 +1,246 @@
+@use "@/app/mixins.scss" as mixins;
+
+.promotions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  &__slider {
+    width: 100%;
+    height: 100%;
+
+    :global(.swiper-pagination) {
+      position: absolute;
+      right: 0;
+      bottom: 0 !important;
+      left: auto !important;
+      display: flex;
+      width: auto !important;
+      align-items: center;
+      padding-right: 4px;
+
+      @include mixins.screen-sm {
+        padding-right: 5px;
+      }
+
+      @include mixins.screen-xss {
+        padding-right: 5px;
+      }
+    }
+
+    :global(.swiper-pagination-bullet) {
+      position: relative;
+      width: 16px;
+      height: 16px;
+      margin: 0 !important;
+      margin-right: -4px !important;
+      border-radius: 50%;
+      background-color: transparent;
+      opacity: 1;
+
+      @include mixins.screen-sm {
+        width: 14px;
+        height: 14px;
+        margin-right: -5px !important;
+      }
+
+      @include mixins.screen-xss {
+        width: 14px;
+        height: 14px;
+        margin-right: -5px !important;
+      }
+    }
+
+    :global(.swiper-pagination-bullet)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: var(--White-White-100);
+      opacity: 0.2;
+      transform: translate(-50%, -50%);
+    }
+
+    :global(.swiper-pagination-bullet-active) {
+      background-color: transparent;
+    }
+
+    :global(.swiper-pagination-bullet-active)::after {
+      background-color: var(
+        --promotions-active-bullet-color,
+        var(--White-White-100)
+      );
+      opacity: 1;
+    }
+  }
+
+  &__bullet {
+    transition:
+      background-color 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  &__slide {
+    width: 470px;
+
+    @include mixins.screen-lg {
+      width: 400px;
+    }
+
+    @include mixins.screen-md {
+      width: 330px;
+    }
+
+    @include mixins.screen-sm {
+      width: 291px;
+    }
+
+    @include mixins.screen-xss {
+      width: 296px;
+    }
+  }
+
+  &__card {
+    position: relative;
+    width: 470px;
+    height: 402px;
+    overflow: hidden;
+    border-radius: 48px;
+    background-color: var(--Black-100);
+    padding: 64px 56px 56px;
+
+    @include mixins.screen-lg {
+      width: 400px;
+      height: 340px;
+      border-radius: 32px;
+      padding: 56px;
+    }
+
+    @include mixins.screen-md {
+      width: 330px;
+      height: 300px; // calculated later, let's say 300px or min-height 280px. Gap 64, pad 80 (40x2), text ~100. 80 + 64 + 100 = 244 + line heights. Let's make it 295px roughly, or height auto.
+      min-height: 295px;
+      border-radius: 32px;
+      padding: 40px;
+    }
+
+    @include mixins.screen-sm {
+      width: 291px;
+      height: 219px;
+      min-height: 219px;
+      border-radius: 24px;
+      padding: 32px;
+    }
+
+    @include mixins.screen-xss {
+      width: 296px;
+      height: 202px; // calculated from content. Let's set min-height or height auto.
+      min-height: 202px;
+      border-radius: 24px;
+      padding: 20px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__textGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include mixins.screen-md {
+      gap: 20px;
+    }
+
+    @include mixins.screen-sm {
+      gap: 12px;
+    }
+
+    @include mixins.screen-xss {
+      gap: 12px;
+    }
+  }
+
+  &__title {
+    min-height: 108px;
+    color: var(--White-White-100);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+
+    @include mixins.screen-lg {
+      min-height: 84px;
+      font-size: 32px;
+    }
+
+    @include mixins.screen-md {
+      min-height: 72px;
+      font-size: 28px;
+    }
+
+    @include mixins.screen-sm {
+      min-height: 64px;
+      font-size: 24px;
+      letter-spacing: -0.01em; // Figma has tracking-[-0.24px] which is -0.01em for 24px font
+    }
+
+    @include mixins.screen-xss {
+      font-size: 22px;
+      min-height: 58px; // 22 * 1.3 = 28.6 * 2 lines = 57.2 => 58px. Roughly.
+      letter-spacing: -0.01em; // -0.22px for 22px
+    }
+  }
+
+  &__price {
+    color: var(--White-White-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3;
+
+    @include mixins.screen-lg {
+      font-size: 18px;
+    }
+
+    @include mixins.screen-md {
+      font-size: 18px;
+    }
+
+    @include mixins.screen-sm {
+      font-size: 16px;
+    }
+
+    @include mixins.screen-xss {
+      font-size: 14px;
+    }
+  }
+
+  &__moreLink {
+    @include mixins.screen-lg {
+      font-size: 14px;
+    }
+
+    @include mixins.screen-md {
+      font-size: 14px;
+    }
+
+    @include mixins.screen-sm {
+      font-size: 13px;
+    }
+
+    @include mixins.screen-xss {
+      font-size: 12px;
+    }
+  }
+}

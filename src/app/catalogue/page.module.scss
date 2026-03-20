@@ -1,0 +1,20 @@
+.page {
+  padding-top: 64px !important;
+  padding-bottom: 80px !important;
+  @include screen-lg {
+    padding-top: 56px !important;
+    padding-bottom: 32px;
+  }
+  @include screen-md {
+    padding-top: 48px !important;
+    padding-bottom: 80px !important;
+  }
+  @include screen-sm {
+    padding-top: 48px !important;
+    padding-bottom: 64px !important;
+  }
+  @include screen-xss {
+    padding-top: 24px !important;
+    padding-bottom: 64px !important;
+  }
+}

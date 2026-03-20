@@ -1,0 +1,32 @@
+{
+  "name": "landing-template-clear-coast",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-visually-hidden": "^1.2.4",
+    "@yandex/ymaps3-types": "^1.0.18856213",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-number-format": "^5.4.4",
+    "swiper": "^12.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "clsx": "^2.1.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "sass": "^1.97.3",
+    "typescript": "^5"
+  }
+}

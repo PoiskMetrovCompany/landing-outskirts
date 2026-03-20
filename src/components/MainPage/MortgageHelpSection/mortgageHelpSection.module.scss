@@ -1,0 +1,411 @@
+@import "@/app/mixins.scss";
+
+.mortgageHelpSection {
+  width: 100%;
+
+  &__card {
+    width: 100%;
+    border-radius: 64px;
+    background: var(--Yellow-100);
+    padding: 56px 64px;
+    overflow: hidden;
+
+    @include screen-lg {
+      border-radius: 48px;
+      padding: 48px 56px;
+    }
+
+    @include screen-md {
+      border-radius: 40px;
+      padding: 40px;
+    }
+
+    @include screen-sm {
+      border-radius: 40px;
+      padding: 32px 40px;
+    }
+
+    @include screen-xss {
+      border-radius: 24px;
+      padding: 16px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 322px;
+
+    @include screen-lg {
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    @include screen-md {
+      align-items: flex-start;
+      gap: 96px;
+    }
+
+    @include screen-sm {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    @include screen-xss {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+
+  &__info {
+    width: 498px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include screen-lg {
+      gap: 20px;
+    }
+
+    @include screen-md {
+      width: 364px;
+      gap: 20px;
+    }
+
+    @include screen-sm {
+      width: 100%;
+      gap: 16px;
+    }
+
+    @include screen-xss {
+      width: 100%;
+      gap: 8px;
+    }
+  }
+
+  &__title {
+    color: var(--White-White-100);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.48px;
+    text-transform: uppercase;
+
+    @include screen-lg {
+      font-size: 40px;
+      letter-spacing: -0.4px;
+    }
+
+    @include screen-md {
+      font-size: 32px;
+      letter-spacing: -0.32px;
+    }
+
+    @include screen-sm {
+      font-size: 32px;
+      letter-spacing: -0.32px;
+    }
+
+    @include screen-xss {
+      font-size: 20px;
+      letter-spacing: -0.2px;
+    }
+  }
+
+  &__titleBreak {
+    @include screen-sm {
+      display: none;
+    }
+
+    @include screen-xss {
+      display: none;
+    }
+  }
+
+  &__description {
+    color: color-mix(in srgb, var(--White-White-100) 80%, transparent);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    @include screen-lg {
+      max-width: 501px;
+      font-size: 14px;
+    }
+
+    @include screen-md {
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      font-size: 14px;
+    }
+
+    @include screen-xss {
+      font-size: 12px;
+      font-weight: 500;
+    }
+  }
+
+  &__form {
+    width: 718px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include screen-lg {
+      width: 535px;
+      gap: 20px;
+    }
+
+    @include screen-md {
+      flex: 1 0 0;
+      width: auto;
+      gap: 20px;
+    }
+
+    @include screen-sm {
+      width: 100%;
+      gap: 16px;
+    }
+
+    @include screen-xss {
+      width: 100%;
+      gap: 12px;
+    }
+  }
+
+  &__fields {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include screen-lg {
+      gap: 20px;
+    }
+
+    @include screen-md {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @include screen-sm {
+      gap: 16px;
+    }
+
+    @include screen-xss {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  &__fieldLabel {
+    display: flex;
+    width: calc(50% - 12px);
+    height: 64px;
+    align-items: center;
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--White-White-100) 35%, transparent);
+    padding: 17px 0;
+
+    @include screen-lg {
+      width: calc(50% - 10px);
+      height: 56px;
+    }
+
+    @include screen-md {
+      width: 100%;
+      height: 48px;
+    }
+
+    @include screen-sm {
+      width: calc(50% - 8px);
+      height: 48px;
+    }
+
+    @include screen-xss {
+      width: 100%;
+      height: 40px;
+      border-bottom-color: var(--Grey-Grey-300);
+    }
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: color-mix(in srgb, var(--White-White-100) 65%, transparent);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    outline: none;
+
+    &::placeholder {
+      color: color-mix(in srgb, var(--White-White-100) 65%, transparent);
+    }
+
+    @include screen-md {
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      font-size: 14px;
+    }
+
+    @include screen-xss {
+      font-size: 13px;
+    }
+  }
+
+  &__dropdown {
+    width: calc(50% - 12px);
+    --dropdown-trigger-border-color: color-mix(
+      in srgb,
+      var(--White-White-100) 35%,
+      transparent
+    );
+    --dropdown-trigger-text-color: var(--White-White-100);
+    --dropdown-item-selected-color: var(--Yellow-100);
+
+    @include screen-lg {
+      width: calc(50% - 10px);
+    }
+
+    @include screen-md {
+      width: 100%;
+    }
+
+    @include screen-sm {
+      width: calc(50% - 8px);
+    }
+
+    @include screen-xss {
+      width: 100%;
+      --dropdown-trigger-border-color: var(--Grey-Grey-300);
+    }
+  }
+
+  &__button {
+    width: 100%;
+    min-height: 64px;
+    height: 64px;
+    border-radius: 40px;
+    color: var(--Black-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    padding: 17px 32px;
+
+    @include screen-lg {
+      min-height: 56px;
+      height: 56px;
+      font-size: 14px;
+      padding: 17px 24px;
+    }
+
+    @include screen-md {
+      min-height: 48px;
+      height: 48px;
+      font-size: 14px;
+      padding: 17px 20px;
+    }
+
+    @include screen-sm {
+      min-height: 48px;
+      height: 48px;
+      font-size: 13px;
+      padding: 17px 20px;
+    }
+
+    @include screen-xss {
+      min-height: 40px;
+      height: 40px;
+      font-size: 12px;
+      padding: 17px 20px;
+    }
+  }
+
+  &__approval {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    @include screen-md {
+      max-width: 411px;
+    }
+
+    @include screen-sm {
+      max-width: 100%;
+    }
+
+    @include screen-xss {
+      max-width: 100%;
+    }
+  }
+
+  &__checkbox {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    border: 1.5px solid
+      color-mix(in srgb, var(--White-White-100) 50%, transparent);
+    border-radius: 4px;
+    background: transparent;
+    appearance: none;
+    cursor: pointer;
+
+    &:checked {
+      background: color-mix(in srgb, var(--White-White-100) 50%, transparent);
+    }
+
+    &:checked::after {
+      position: absolute;
+      top: 3px;
+      left: 6px;
+      width: 5px;
+      height: 9px;
+      border-right: 1.5px solid var(--White-White-100);
+      border-bottom: 1.5px solid var(--White-White-100);
+      content: "";
+      transform: rotate(45deg);
+    }
+  }
+
+  &__approvalText {
+    color: color-mix(in srgb, var(--White-White-100) 65%, transparent);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    @include screen-lg {
+      font-size: 13px;
+    }
+
+    @include screen-md {
+      font-size: 13px;
+    }
+
+    @include screen-sm {
+      font-size: 13px;
+    }
+
+    @include screen-xss {
+      font-size: 12px;
+    }
+
+    strong {
+      color: var(--White-White-100);
+      font-weight: 500;
+    }
+  }
+}

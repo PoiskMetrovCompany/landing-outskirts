@@ -1,0 +1,488 @@
+.aboutTabs {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 64px;
+
+  @include screen-lg {
+    gap: 56px;
+  }
+
+  @include screen-md {
+    gap: 48px;
+  }
+
+  @include screen-sm {
+    gap: 48px;
+  }
+
+  @include screen-xss {
+    gap: 24px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    @include screen-sm {
+      gap: 24px;
+      flex-wrap: wrap;
+
+      &::after {
+        content: "";
+        width: 100%;
+        order: 3;
+      }
+    }
+
+    @include screen-xss {
+      gap: 16px;
+      flex-wrap: wrap;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &__heading {
+    color: var(--Black-100);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+
+    @include screen-lg {
+      font-size: 48px;
+    }
+
+    @include screen-md {
+      font-size: 40px;
+    }
+
+    @include screen-sm {
+      font-size: 40px;
+      order: 1;
+    }
+
+    @include screen-xss {
+      font-size: 24px;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include screen-lg {
+      gap: 20px;
+    }
+
+    @include screen-md {
+      gap: 16px;
+    }
+
+    @include screen-sm {
+      display: contents;
+    }
+
+    @include screen-xss {
+      display: contents;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    height: 64px;
+    align-items: center;
+    gap: 32px;
+    border-radius: 80px;
+    background-color: var(--White-White-100);
+    padding: 20px 32px;
+
+    @include screen-lg {
+      height: 56px;
+      gap: 24px;
+      padding: 16px 24px;
+    }
+
+    @include screen-md {
+      height: 48px;
+      gap: 20px;
+      padding: 12px 20px;
+    }
+
+    @include screen-sm {
+      order: 4;
+      height: 48px;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    @include screen-xss {
+      order: 3;
+      height: 40px;
+      gap: 16px;
+      padding: 0 16px;
+      border-radius: 80px;
+      width: 100%;
+      overflow-x: auto;
+      justify-content: flex-start;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__tab {
+    border: none;
+    background: transparent;
+    color: var(--Grey-Grey-600);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    @include screen-lg {
+      font-size: 16px;
+    }
+
+    @include screen-md {
+      font-size: 16px;
+    }
+
+    @include screen-sm {
+      font-size: 16px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    @include screen-xss {
+      font-size: 14px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    &--active {
+      color: var(--Yellow-100);
+    }
+  }
+
+  &__cta {
+    min-height: 64px;
+    border-radius: 40px;
+    padding: 17px 32px;
+    color: var(--White-White-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+
+    @include screen-lg {
+      min-height: 48px;
+      padding: 13.5px 24px;
+      font-size: 14px;
+    }
+
+    @include screen-md {
+      min-height: 40px;
+      padding: 8px 20px;
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      order: 2;
+      min-height: 48px;
+      padding: 14px 20px;
+      font-size: 13px;
+    }
+
+    @include screen-xss {
+      order: 2;
+      min-height: 40px;
+      padding: 17px 16px;
+      font-size: 12px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    gap: 40px;
+
+    @include screen-lg {
+      gap: 32px;
+    }
+
+    @include screen-md {
+      gap: 24px;
+    }
+
+    @include screen-sm {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @include screen-xss {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  &__textCard {
+    display: flex;
+    min-height: 780px;
+    flex: 1 1 calc((100% - 40px) / 2);
+    min-width: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 64px;
+    background-color: var(--White-White-100);
+    padding: 80px 0 80px 80px;
+
+    @include screen-lg {
+      flex: 1 1 calc((100% - 32px) / 2);
+      height: 640px;
+      min-height: 640px;
+      padding: 64px 0 64px 64px;
+      border-radius: 48px;
+      overflow: hidden;
+    }
+
+    @include screen-md {
+      flex: 1 1 calc((100% - 24px) / 2);
+      height: 547px;
+      min-height: 547px;
+      padding: 40px 0 40px 40px;
+      border-radius: 40px;
+      overflow: hidden;
+    }
+
+    @include screen-sm {
+      flex: 0 0 auto;
+      width: 100%;
+      height: 490px;
+      min-height: 490px;
+      padding: 40px 0 40px 40px;
+      border-radius: 40px;
+      overflow: hidden;
+    }
+
+    @include screen-xss {
+      flex: 0 0 auto;
+      width: 100%;
+      min-height: 383px;
+      padding: 16px 0 16px 16px;
+      border-radius: 24px;
+    }
+  }
+
+  &__textWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include screen-lg {
+      flex: 1 1 auto;
+      min-height: 0;
+      gap: 32px;
+    }
+
+    @include screen-md {
+      flex: 1 1 auto;
+      min-height: 0;
+      gap: 24px;
+    }
+
+    @include screen-sm {
+      flex: 1 1 auto;
+      min-height: 0;
+      gap: 24px;
+    }
+
+    @include screen-xss {
+      gap: 16px;
+    }
+  }
+
+  &__title {
+    color: var(--Yellow-100);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+
+    @include screen-lg {
+      font-size: 36px;
+    }
+
+    @include screen-md {
+      font-size: 32px;
+    }
+
+    @include screen-sm {
+      font-size: 32px;
+    }
+
+    @include screen-xss {
+      font-size: 20px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    padding-right: 80px;
+    flex-direction: column;
+    gap: 16px;
+
+    height: 432px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--Orange-Primary-Orange-100, #ec7d3f);
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: var(--Orange-Primary-Orange-100, #ec7d3f);
+    }
+
+    @include screen-lg {
+      min-height: 0;
+      max-width: none;
+      padding-right: 64px;
+      height: 372px;
+    }
+
+    @include screen-md {
+      min-height: 0;
+      max-width: none;
+      padding-right: 40px;
+      height: 348px;
+    }
+
+    @include screen-sm {
+      min-height: 0;
+      max-width: none;
+      padding-right: 40px;
+      height: 278px;
+    }
+    @include screen-xss {
+      padding-right: 16px;
+      height: 259px;
+    }
+
+    p {
+      color: var(--Grey-Grey-900);
+      font-family: var(--font-onest), sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.5;
+
+      @include screen-lg {
+        font-size: 15px;
+      }
+
+      @include screen-md {
+        font-size: 15px;
+      }
+
+      @include screen-sm {
+        font-size: 15px;
+      }
+
+      @include screen-xss {
+        font-size: 14px;
+
+        &:not(:last-child) {
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+
+  &__link {
+    width: fit-content;
+    border-bottom: 1.5px solid var(--Black-100);
+    padding-bottom: 8px;
+    color: var(--Black-100);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+
+    @include screen-lg {
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      font-size: 13px;
+    }
+
+    @include screen-xss {
+      font-size: 12px;
+    }
+  }
+
+  &__imageCard {
+    position: relative;
+    flex: 1 1 calc((100% - 40px) / 2);
+    min-width: 0;
+    height: 780px;
+    overflow: hidden;
+    border-radius: 64px;
+    background-color: var(--Grey-Grey-300);
+
+    @include screen-lg {
+      flex: 1 1 calc((100% - 32px) / 2);
+      height: 640px;
+      border-radius: 48px;
+    }
+
+    @include screen-md {
+      flex: 1 1 calc((100% - 24px) / 2);
+      height: 547px;
+      border-radius: 40px;
+    }
+
+    @include screen-sm {
+      flex: 0 0 auto;
+      order: -1;
+      width: 100%;
+      height: 340px;
+      border-radius: 40px;
+    }
+
+    @include screen-xss {
+      flex: 0 0 auto;
+      order: -1;
+      width: 100%;
+      height: 132px;
+      border-radius: 24px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+  }
+}

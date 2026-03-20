@@ -1,0 +1,57 @@
+.moreLink {
+  display: inline-flex;
+  width: fit-content;
+  padding-bottom: 8px;
+  font-family: var(--font-onest), sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+
+  @include screen-lg {
+    font-size: 14px;
+    padding-bottom: 8px;
+  }
+
+  @include screen-md {
+    font-size: 14px;
+    padding-bottom: 8px;
+  }
+
+  @include screen-sm {
+    font-size: 13px;
+    padding-bottom: 6px;
+  }
+
+  @include screen-xss {
+    font-size: 12px;
+    padding-bottom: 3px;
+  }
+
+  &--light {
+    color: var(--White-White-100);
+    border-bottom: 1.5px solid var(--White-White-100);
+
+    &:hover {
+      border-bottom: 1.5px solid
+        var(--white-white-10080, rgba(255, 255, 255, 0.8));
+      color: var(--white-white-10080, rgba(255, 255, 255, 0.8));
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: var(--white-white-10050, rgba(255, 255, 255, 0.5));
+      border-bottom: 1.5px solid
+        var(--white-white-10050, rgba(255, 255, 255, 0.5));
+    }
+  }
+  &--dark {
+    color: var(---Black-100, #20201f);
+    border-bottom: 1.5px solid var(---Black-100, #20201f);
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

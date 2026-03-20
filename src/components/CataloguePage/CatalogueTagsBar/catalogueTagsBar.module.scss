@@ -1,0 +1,60 @@
+.tagsBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  @include screen-xss {
+    flex-wrap: wrap;
+  }
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 40px;
+    border: none;
+    background-color: var(--White-White-100);
+    color: var(--Grey-Grey-700);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    @include screen-lg {
+      height: 37px;
+      padding: 0 16px;
+      font-size: 14px;
+    }
+    @include screen-md {
+      padding: 0 12px;
+      height: 32px;
+      font-size: 14px;
+    }
+    @include screen-sm {
+      height: 32px;
+      padding: 0 12px;
+      font-size: 14px;
+    }
+    @include screen-xss {
+      height: 28px;
+      padding: 0 12px;
+      font-size: 13px ;
+    }
+    &:hover {
+      border-color: var(--Grey-Grey-500);
+    }
+
+    &--active {
+      background-color: var(--Yellow-100);
+      border-color: var(--Yellow-100);
+      color: var(--White-White-100);
+
+      &:hover {
+        border-color: var(--Yellow-100);
+        opacity: 0.9;
+      }
+    }
+  }
+}

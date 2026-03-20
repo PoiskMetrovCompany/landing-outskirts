@@ -1,0 +1,338 @@
+@import "@/app/mixins.scss";
+
+.lifeSpace {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 64px;
+
+  @include screen-lg {
+    gap: 56px;
+  }
+
+  @include screen-md {
+    gap: 48px;
+  }
+
+  @include screen-sm {
+    gap: 48px;
+  }
+
+  @include screen-xss {
+    gap: 24px;
+  }
+
+  &__header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    @include screen-sm {
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    @include screen-xss {
+      gap: 0;
+    }
+  }
+
+  &__title {
+    color: var(--Black-100);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    @include screen-lg {
+      font-size: 48px;
+    }
+
+    @include screen-md {
+      font-size: 40px;
+    }
+
+    @include screen-sm {
+      flex: 1;
+      min-width: 0;
+      font-size: 40px;
+      white-space: normal;
+    }
+
+    @include screen-xss {
+      width: 100%;
+      font-size: 24px;
+      white-space: normal;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include screen-lg {
+      gap: 20px;
+    }
+
+    @include screen-md {
+      gap: 16px;
+    }
+
+    @include screen-sm {
+      gap: 16px;
+    }
+
+    @include screen-xss {
+      display: none;
+    }
+  }
+
+  &__arrows {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include screen-lg {
+      gap: 12px;
+    }
+
+    @include screen-md {
+      gap: 12px;
+    }
+
+    @include screen-sm {
+      gap: 12px;
+    }
+  }
+
+  &__arrowButton {
+    width: 64px;
+    height: 64px;
+    border-radius: 40px;
+    padding: 18px;
+
+    @include screen-lg {
+      width: 56px;
+      height: 56px;
+      padding: 16px;
+    }
+
+    @include screen-md {
+      width: 48px;
+      height: 48px;
+      padding: 14px;
+    }
+
+    @include screen-sm {
+      width: 48px;
+      height: 48px;
+      padding: 14px;
+    }
+  }
+
+  &__arrowIcon {
+    width: 28px;
+    height: 28px;
+
+    @include screen-lg {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include screen-md {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-sm {
+      width: 20px;
+      height: 20px;
+    }
+
+    &--prev {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__arrowIconImage {
+    object-fit: contain;
+  }
+
+  &__actionButton {
+    height: 64px;
+    border-radius: 40px;
+    padding: 17px 32px;
+    font-family: var(--font-onest), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    white-space: nowrap;
+
+    @include screen-lg {
+      height: 56px;
+      padding: 17px 24px;
+      font-size: 14px;
+    }
+
+    @include screen-md {
+      height: 48px;
+      padding: 17px 20px;
+      font-size: 14px;
+    }
+
+    @include screen-sm {
+      height: 48px;
+      padding: 17px 20px;
+      font-size: 13px;
+    }
+  }
+
+  &__slider {
+    width: 100%;
+  }
+
+  &__sliderDesktop {
+    width: 100%;
+
+    @include screen-xss {
+      display: none;
+    }
+  }
+
+  &__sliderMobile {
+    display: none;
+    width: 100%;
+
+    @include screen-xss {
+      display: block;
+    }
+  }
+
+  &__slide {
+    height: auto;
+
+    @include screen-xss {
+      width: 100% !important;
+    }
+  }
+
+  &__content {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    gap: 80px;
+
+    @include screen-lg {
+      gap: 64px;
+    }
+
+    @include screen-md {
+      gap: 48px;
+    }
+
+    @include screen-sm {
+      gap: 24px;
+    }
+
+    @include screen-xss {
+      display: none;
+    }
+  }
+
+  &__contentMobile {
+    display: none;
+
+    @include screen-xss {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+  }
+
+  &__columnMobile {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  &__paragraph {
+    color: var(--Grey-Grey-900);
+    font-family: var(--font-onest), sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    @include screen-lg {
+      font-size: 15px;
+    }
+
+    @include screen-md {
+      font-size: 15px;
+    }
+
+    @include screen-sm {
+      font-size: 15px;
+    }
+
+    @include screen-xss {
+      font-size: 14px;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+
+      @include screen-xss {
+        margin-bottom: 12px;
+      }
+    }
+  }
+
+  &__showMoreButton {
+    display: none;
+
+    @include screen-xss {
+      display: inline-flex;
+      align-self: flex-start;
+      padding-bottom: 4px;
+      font-size: 12px;
+      border: none;
+      border-bottom: 1.5px solid var(---Black-100, #20201f);
+    }
+  }
+
+  &__actionButtonMobile {
+    display: none;
+
+    @include screen-xss {
+      display: inline-flex;
+      min-width: 0;
+      height: 40px;
+      padding: 10px 16px;
+      border-radius: 40px;
+      font-family: var(--font-onest), sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }
+
+  @include screen-xss {
+    &__actionButton {
+      display: none;
+    }
+  }
+}

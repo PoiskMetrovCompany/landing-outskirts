@@ -1,0 +1,345 @@
+@import "@/app/mixins.scss";
+
+.glleryAbout {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 64px;
+
+  @include screen-lg {
+    gap: 56px;
+  }
+
+  @include screen-md {
+    gap: 48px;
+  }
+
+  @include screen-sm {
+    gap: 48px;
+  }
+
+  @include screen-xss {
+    gap: 24px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    color: var(--Black-100);
+    font-family: var(--font-oswald), sans-serif;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+
+    @include screen-lg {
+      font-size: 48px;
+    }
+
+    @include screen-md {
+      font-size: 40px;
+    }
+
+    @include screen-sm {
+      font-size: 40px;
+    }
+
+    @include screen-xss {
+      font-size: 24px;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    @include screen-lg {
+      gap: 12px;
+    }
+
+    @include screen-md {
+      gap: 12px;
+    }
+
+    @include screen-sm {
+      gap: 12px;
+    }
+
+    @include screen-xss {
+      display: none;
+    }
+  }
+
+  &__arrowButton {
+    width: 64px;
+    height: 64px;
+    border-radius: 40px;
+    padding: 0;
+
+    @include screen-lg {
+      width: 56px;
+      height: 56px;
+    }
+
+    @include screen-md {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include screen-sm {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &__arrowIconWrap {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    transform: rotate(180deg);
+
+    &--next {
+      transform: rotate(0deg);
+    }
+  }
+
+  &__arrowIconImage {
+    object-fit: contain;
+  }
+
+  &__slider {
+    width: 100%;
+    overflow: visible;
+    margin-left: -120px;
+
+    @include screen-lg {
+      margin-left: -80px;
+    }
+
+    @include screen-md {
+      margin-left: -40px;
+    }
+
+    @include screen-sm {
+      margin-left: -40px;
+    }
+
+    @include screen-xss {
+      margin-left: -16px;
+    }
+  }
+
+  &__slide {
+    width: 881px !important;
+    transition: opacity 0.2s ease;
+
+    @include screen-lg {
+      width: 656px !important;
+    }
+
+    @include screen-md {
+      width: 454px !important;
+    }
+
+    @include screen-sm {
+      width: 340px !important;
+    }
+
+    @include screen-xss {
+      width: 280px !important;
+    }
+
+    &--dimmed {
+      opacity: 0.5;
+    }
+  }
+
+  &__card {
+    position: relative;
+    width: 881px;
+    height: 750px;
+    overflow: hidden;
+
+    @include screen-lg {
+      width: 656px;
+      height: 558px;
+    }
+
+    @include screen-md {
+      width: 454px;
+      height: 386px;
+    }
+
+    @include screen-sm {
+      width: 340px;
+      height: 289px;
+    }
+
+    @include screen-xss {
+      width: 280px;
+      height: 238px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+  }
+
+  &__imageWrap {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__zoomButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-flex;
+    width: 96px;
+    height: 96px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 250px;
+    background-color: var(--Black-100-20);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+
+    @include screen-lg {
+      width: 88px;
+      height: 88px;
+    }
+
+    @include screen-md {
+      width: 56px;
+      height: 56px;
+    }
+
+    @include screen-sm {
+      width: 56px;
+      height: 56px;
+    }
+
+    @include screen-xss {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &__zoomIconWrap {
+    position: relative;
+    width: 24px;
+    height: 24px;
+
+    @include screen-xss {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__zoomIconImage {
+    object-fit: contain;
+  }
+
+  &__zoomOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: color-mix(in srgb, var(--Black-100) 70%, transparent);
+  }
+
+  &__zoomCloseButton {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    z-index: 1;
+    display: flex;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    border-radius: 250px;
+    background: var(--white-white-10010, rgba(255, 255, 255, 0.1)) !important;
+    backdrop-filter: blur(6px);
+
+    @include screen-md {
+      top: 24px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+    }
+
+    @include screen-sm {
+      top: 24px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+    }
+
+    @include screen-xss {
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__zoomCloseIconWrap {
+    position: relative;
+    width: 20px;
+    height: 20px;
+
+    @include screen-md {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-sm {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include screen-xss {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__zoomCloseIconImage {
+    object-fit: contain;
+  }
+
+  &__zoomImageWrap {
+    position: relative;
+    height: 100vh;
+    width: auto;
+    // width: min(94vw, calc(100vh * 1.174667));
+
+    @include screen-sm {
+      width: 100vw;
+      height: auto;
+    }
+
+    @include screen-xss {
+      width: 100vw;
+      height: auto;
+    }
+  }
+
+  &__zoomImage {
+    object-fit: cover;
+  }
+}
