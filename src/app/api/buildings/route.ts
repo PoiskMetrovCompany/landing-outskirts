@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server"
 
-const BUILDINGS_ENDPOINT = "/api/buildings"
+const BUILDINGS_ENDPOINT = "/buildings"
 
 export async function GET() {
   try {
-    const origin = process.env.CLEAR_COAST_API?.trim()
+    const origin = process.env.NEXT_PUBLIC_API_URL?.trim()
     if (!origin) {
       return NextResponse.json(
-        { message: "CLEAR_COAST_API is not configured" },
+        { message: "NEXT_PUBLIC_API_URL is not configured" },
         { status: 500 },
       )
     }

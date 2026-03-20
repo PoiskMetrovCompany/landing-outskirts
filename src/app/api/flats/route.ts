@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 
-const FLATS_ENDPOINT = "/api/v1/apartments/from-developer"
+const FLATS_ENDPOINT = "/apartments/from-developer"
 const RESIDENTIAL_COMPLEX_KEY = "6214c40646b6ccc0cfc39dc7"
 
 const ALLOWED_PARAMS = [
@@ -17,10 +17,10 @@ const ALLOWED_PARAMS = [
 
 export async function GET(request: NextRequest) {
   try {
-    const origin = process.env.CLEAR_COAST_API?.trim()
+    const origin = process.env.NEXT_PUBLIC_API_URL?.trim()
     if (!origin) {
       return NextResponse.json(
-        { message: "CLEAR_COAST_API is not configured" },
+        { message: "NEXT_PUBLIC_API_URL is not configured" },
         { status: 500 },
       )
     }
