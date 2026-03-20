@@ -7,7 +7,7 @@
   justify-content: center;
   gap: 48px;
   border-radius: 64px;
-  background-color: var(--Black-100);
+  background: var(---Yellow-100, #fab700);
   margin-top: -80px;
   height: 72px;
 
@@ -24,7 +24,6 @@
   @include screen-lg {
     gap: 32px;
     height: 64px;
-
   }
 
   @include screen-md {
