@@ -30,7 +30,7 @@ const ROOM_FILTER_MAP: Record<Exclude<PropertyType, "all">, string> = {
   "1k": "1",
   "2k": "2",
   "3k": "3",
-  "4k": "4+",
+  "4k": "4",
 }
 
 const LIMIT_ALL = 12
@@ -64,10 +64,7 @@ const BestOffersSection = () => {
 
   const openRequestDialog = () => setIsDialogOpen(true)
 
-  const offerCards = useMemo(
-    () => flats.map(mapFlatToOfferCard),
-    [flats],
-  )
+  const offerCards = useMemo(() => flats.map(mapFlatToOfferCard), [flats])
 
   const handleTabChange = (tab: PropertyType) => {
     setActiveTab(tab)

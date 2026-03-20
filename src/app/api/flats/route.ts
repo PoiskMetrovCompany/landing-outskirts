@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from "next/server"
 
-const FLATS_ENDPOINT = "/api/flats"
+const FLATS_ENDPOINT = "/api/v1/apartments/from-developer"
+const RESIDENTIAL_COMPLEX_KEY = "6214c40646b6ccc0cfc39dc7"
 
 const ALLOWED_PARAMS = [
   "page",
-  "limit",
-  "buildingIds",
+  "per_page",
   "rooms",
-  "priceFrom",
-  "priceTo",
-  "areaFrom",
-  "areaTo",
-  "floorFrom",
-  "floorTo",
+  "price_from",
+  "price_to",
+  "area_from",
+  "area_to",
+  "floor_from",
+  "floor_to",
 ] as const
 
 export async function GET(request: NextRequest) {
@@ -28,6 +28,8 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
 
     const query = new URLSearchParams()
+    query.set("residential_complex_key", RESIDENTIAL_COMPLEX_KEY)
+
     for (const key of ALLOWED_PARAMS) {
       const value = searchParams.get(key)
       if (value !== null && value !== "") {

@@ -41,7 +41,7 @@ const ROOM_OPTIONS = [
   { value: "1", label: "1 комната" },
   { value: "2", label: "2 комнаты" },
   { value: "3", label: "3 комнаты" },
-  { value: "4+", label: "4 комнаты" },
+  { value: "4", label: "4 комнаты" },
 ]
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -188,6 +188,7 @@ const RangePanel = ({ value, onChange, unit }: RangePanelProps) => (
 interface CatalogueFilterBarProps {
   onApply?: (filters: FilterState) => void
   houseOptions?: HouseOption[]
+  hideHouseFilter?: boolean
 }
 
 export const INITIAL_FILTERS: FilterState = {
@@ -199,11 +200,19 @@ export const INITIAL_FILTERS: FilterState = {
   floorOptions: [],
 }
 
-const CatalogueFilterBar = ({ onApply, houseOptions }: CatalogueFilterBarProps) => {
+const CatalogueFilterBar = ({
+  onApply,
+  houseOptions,
+  hideHouseFilter = false,
+}: CatalogueFilterBarProps) => {
   const [activeDropdown, setActiveDropdown] = useState<ActiveDropdown>(null)
   const [filters, setFilters] = useState<FilterState>(INITIAL_FILTERS)
   const [isFiltersModalOpen, setIsFiltersModalOpen] = useState(false)
-  const [isCompactFilterLabels, setIsCompactFilterLabels] = useState(false)
+  const [isCompactFilterLabels, setIsCompactFilterLabels] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(max-width: 1439px)").matches
+      : false,
+  )
 
   const {
     house: selectedHouse,
@@ -235,7 +244,6 @@ const CatalogueFilterBar = ({ onApply, houseOptions }: CatalogueFilterBarProps) 
       setIsCompactFilterLabels(event.matches)
     }
 
-    setIsCompactFilterLabels(media.matches)
     media.addEventListener("change", handleChange)
 
     return () => media.removeEventListener("change", handleChange)
@@ -307,7 +315,8 @@ const CatalogueFilterBar = ({ onApply, houseOptions }: CatalogueFilterBarProps) 
     if (filters.price.min || filters.price.max) count += 1
     if (filters.area.min || filters.area.max) count += 1
     if (filters.floor.min || filters.floor.max) count += 1
-    if ((filters.floorOptions?.length ?? 0) > 0) count += filters.floorOptions!.length
+    if ((filters.floorOptions?.length ?? 0) > 0)
+      count += filters.floorOptions!.length
     return count
   }
 
@@ -315,30 +324,33 @@ const CatalogueFilterBar = ({ onApply, houseOptions }: CatalogueFilterBarProps) 
     <div className={styles.filterBar} ref={containerRef}>
       <div className={styles.filterBar__inputs}>
         <div className={styles.filterBar__desktopInputs}>
-          {/* Выберите дом */}
-          <div className={styles.filterBar__dropdownWrap}>
-            <FilterTrigger
-              label={getHouseLabel()}
-              isActive={activeDropdown === "house"}
-              hasValue={selectedHouse.length > 0}
-              onClick={() => toggle("house")}
-            />
-            {activeDropdown === "house" && (
-              <div className={styles.filterBar__panel}>
-                {houseFilterOptions.map((opt) => (
-                  <CheckboxItem
-                    key={opt.value}
-                    label={opt.label}
-                    subtitle={opt.subtitle}
-                    checked={selectedHouse.includes(opt.value)}
-                    onClick={() => toggleHouse(opt.value)}
-                  />
-                ))}
+          {!hideHouseFilter && (
+            <>
+              <div className={styles.filterBar__dropdownWrap}>
+                <FilterTrigger
+                  label={getHouseLabel()}
+                  isActive={activeDropdown === "house"}
+                  hasValue={selectedHouse.length > 0}
+                  onClick={() => toggle("house")}
+                />
+                {activeDropdown === "house" && (
+                  <div className={styles.filterBar__panel}>
+                    {houseFilterOptions.map((opt) => (
+                      <CheckboxItem
+                        key={opt.value}
+                        label={opt.label}
+                        subtitle={opt.subtitle}
+                        checked={selectedHouse.includes(opt.value)}
+                        onClick={() => toggleHouse(opt.value)}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
 
-          <div className={styles.filterBar__separator} />
+              <div className={styles.filterBar__separator} />
+            </>
+          )}
 
           {/* Кол-во комнат */}
           <div className={styles.filterBar__dropdownWrap}>
@@ -453,6 +465,7 @@ const CatalogueFilterBar = ({ onApply, houseOptions }: CatalogueFilterBarProps) 
         open={isFiltersModalOpen}
         onOpenChange={setIsFiltersModalOpen}
         houseOptions={houseFilterOptions}
+        hideHouseFilter={hideHouseFilter}
         filters={filters}
         onFiltersChange={setFilters}
         onApply={handleApply}

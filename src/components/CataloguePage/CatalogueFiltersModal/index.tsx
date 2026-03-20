@@ -28,6 +28,7 @@ interface CatalogueFiltersModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
   houseOptions?: HouseOption[]
+  hideHouseFilter?: boolean
   filters: FilterState
   onFiltersChange: (filters: FilterState) => void
   onApply: () => void
@@ -41,6 +42,7 @@ const CatalogueFiltersModal = ({
   open,
   onOpenChange,
   houseOptions,
+  hideHouseFilter = false,
   filters,
   onFiltersChange,
   onApply,
@@ -109,25 +111,27 @@ const CatalogueFiltersModal = ({
             {/* Content */}
             <div className={styles.modal__contentArea}>
               {/* Дом */}
-              <div className={styles.modal__section}>
-                <div className={styles.modal__sectionLabel}>Дом</div>
-                <div className={styles.modal__sectionOptions}>
-                  {houseFilterOptions.map((opt) => (
-                    <button
-                      key={opt.value}
-                      type="button"
-                      className={clsx(
-                        styles.modal__filterButton,
-                        filters.house.includes(opt.value) &&
-                          styles["modal__filterButton--active"],
-                      )}
-                      onClick={() => toggleHouse(opt.value)}
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
+              {!hideHouseFilter && (
+                <div className={styles.modal__section}>
+                  <div className={styles.modal__sectionLabel}>Дом</div>
+                  <div className={styles.modal__sectionOptions}>
+                    {houseFilterOptions.map((opt) => (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        className={clsx(
+                          styles.modal__filterButton,
+                          filters.house.includes(opt.value) &&
+                            styles["modal__filterButton--active"],
+                        )}
+                        onClick={() => toggleHouse(opt.value)}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Количество комнат */}
               <div className={styles.modal__section}>

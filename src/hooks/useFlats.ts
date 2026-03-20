@@ -9,11 +9,11 @@ import type { ApiFlat } from "./mappers/flatMapper"
 const FLATS_ENDPOINT = "/api/flats"
 
 const ROOM_TO_API: Record<string, string> = {
-  studio: "0",
+  studio: "studio",
   "1": "1",
   "2": "2",
   "3": "3",
-  "4+": "4",
+  "4": "4",
 }
 
 function buildFlatsQuery(
@@ -23,11 +23,8 @@ function buildFlatsQuery(
 ): string {
   const params = new URLSearchParams()
   params.set("page", String(page))
-  params.set("limit", String(limit))
+  params.set("per_page", String(limit))
 
-  if (filters.house.length > 0) {
-    params.set("buildingIds", filters.house.join(","))
-  }
   if (filters.rooms.length > 0) {
     const roomValues = filters.rooms
       .map((r) => ROOM_TO_API[r] ?? r)
@@ -36,23 +33,32 @@ function buildFlatsQuery(
       params.set("rooms", roomValues.join(","))
     }
   }
-  if (filters.price.min) params.set("priceFrom", filters.price.min)
-  if (filters.price.max) params.set("priceTo", filters.price.max)
-  if (filters.area.min) params.set("areaFrom", filters.area.min)
-  if (filters.area.max) params.set("areaTo", filters.area.max)
-  if (filters.floor.min) params.set("floorFrom", filters.floor.min)
-  if (filters.floor.max) params.set("floorTo", filters.floor.max)
+  if (filters.price.min) params.set("price_from", filters.price.min)
+  if (filters.price.max) params.set("price_to", filters.price.max)
+  if (filters.area.min) params.set("area_from", filters.area.min)
+  if (filters.area.max) params.set("area_to", filters.area.max)
+  if (filters.floor.min) params.set("floor_from", filters.floor.min)
+  if (filters.floor.max) params.set("floor_to", filters.floor.max)
 
   return `${FLATS_ENDPOINT}?${params.toString()}`
 }
 
 interface FlatsResponse {
-  data?: ApiFlat[]
-  pagination?: {
-    page: number
-    limit: number
-    total: number
-    totalPages: number
+  data?: {
+    attributes?: {
+      apartments?: ApiFlat[]
+      complex?: {
+        apartments_by_key?: ApiFlat[]
+      }
+    }
+  }
+  meta?: {
+    pagination?: {
+      current_page: number
+      per_page: number
+      total: number
+      last_page: number
+    }
   }
 }
 
@@ -60,23 +66,31 @@ export interface UseFlatsOptions {
   filters: FilterState
   page?: number
   limit?: number
+  append?: boolean
 }
 
 export interface UseFlatsResult {
   flats: ApiFlat[]
   totalCount: number
   isLoading: boolean
-  pagination: { page: number; limit: number; total: number; totalPages: number } | null
+  pagination: {
+    page: number
+    limit: number
+    total: number
+    totalPages: number
+  } | null
 }
 
 export const useFlats = ({
   filters,
   page = 1,
   limit = 20,
+  append = false,
 }: UseFlatsOptions): UseFlatsResult => {
   const [flats, setFlats] = useState<ApiFlat[]>([])
   const [totalCount, setTotalCount] = useState(0)
-  const [pagination, setPagination] = useState<UseFlatsResult["pagination"]>(null)
+  const [pagination, setPagination] =
+    useState<UseFlatsResult["pagination"]>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -85,6 +99,12 @@ export const useFlats = ({
     const loadFlats = async () => {
       try {
         setIsLoading(true)
+        if (page === 1) {
+          setFlats([])
+          setTotalCount(0)
+          setPagination(null)
+        }
+
         const url = buildFlatsQuery(filters, page, limit)
 
         const response = await fetch(url, {
@@ -97,11 +117,44 @@ export const useFlats = ({
         }
 
         const result: FlatsResponse = await response.json()
-        setFlats(result.data ?? [])
-        setTotalCount(result.pagination?.total ?? 0)
-        setPagination(result.pagination ?? null)
+        const apartments =
+          result.data?.attributes?.apartments ??
+          result.data?.attributes?.complex?.apartments_by_key ??
+          []
+        const responsePagination = result.meta?.pagination
+
+        setFlats((prev) => {
+          if (!append || page === 1) {
+            return apartments
+          }
+
+          const prevIds = new Set(
+            prev.map((flat) => flat.key || String(flat.id)),
+          )
+          const nextFlats = apartments.filter(
+            (flat) => !prevIds.has(flat.key || String(flat.id)),
+          )
+
+          return nextFlats.length > 0 ? [...prev, ...nextFlats] : prev
+        })
+        setTotalCount(responsePagination?.total ?? apartments.length)
+        setPagination(
+          responsePagination
+            ? {
+                page: responsePagination.current_page,
+                limit: responsePagination.per_page,
+                total: responsePagination.total,
+                totalPages: responsePagination.last_page,
+              }
+            : null,
+        )
       } catch (error) {
         if (controller.signal.aborted) return
+        if (page === 1) {
+          setFlats([])
+          setTotalCount(0)
+          setPagination(null)
+        }
         console.error("Failed to load flats", error)
       } finally {
         if (!controller.signal.aborted) {
@@ -113,7 +166,7 @@ export const useFlats = ({
     void loadFlats()
 
     return () => controller.abort()
-  }, [filters, page, limit])
+  }, [append, filters, page, limit])
 
   return { flats, totalCount, isLoading, pagination }
 }

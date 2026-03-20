@@ -16,7 +16,6 @@ import CatalogueFilterBar, {
   type FilterState,
 } from "@/components/CataloguePage/CatalogueFilterBar"
 import CatalogueTagsBar from "@/components/CataloguePage/CatalogueTagsBar"
-import { useBuildings } from "@/hooks/useBuildings"
 import { useFlats } from "@/hooks/useFlats"
 import { mapFlatToOfferCard } from "@/hooks/mappers/flatMapper"
 
@@ -30,34 +29,30 @@ const SKELETON_CARDS = Array.from(
 )
 
 const CatalogueSection = () => {
-  const [visibleCardsCount, setVisibleCardsCount] = useState(
-    INITIAL_VISIBLE_CARDS,
-  )
   const [appliedFilters, setAppliedFilters] =
     useState<FilterState>(INITIAL_FILTERS)
+  const [page, setPage] = useState(1)
   const [isRequestDialogOpen, setIsRequestDialogOpen] = useState(false)
-  const [isShowMoreLoading, setIsShowMoreLoading] = useState(false)
-  const { houseOptions } = useBuildings()
-  const { flats, totalCount, isLoading } = useFlats({
+  const currentPageLimit = page === 1 ? INITIAL_VISIBLE_CARDS : SHOW_MORE_STEP
+  const { flats, totalCount, isLoading, pagination } = useFlats({
     filters: appliedFilters,
-    page: 1,
-    limit: visibleCardsCount,
+    page,
+    limit: currentPageLimit,
+    append: true,
   })
-
   const cards = useMemo(() => flats.map(mapFlatToOfferCard), [flats])
 
   const handleApplyFilters = useCallback((filters: FilterState) => {
-    setIsShowMoreLoading(false)
     setAppliedFilters(filters)
-    setVisibleCardsCount(INITIAL_VISIBLE_CARDS)
+    setPage(1)
   }, [])
   const initialCards = useMemo(
     () => cards.slice(0, INITIAL_VISIBLE_CARDS),
     [cards],
   )
   const extraCards = useMemo(
-    () => cards.slice(INITIAL_VISIBLE_CARDS, visibleCardsCount),
-    [cards, visibleCardsCount],
+    () => cards.slice(INITIAL_VISIBLE_CARDS),
+    [cards],
   )
 
   const rowOneCards = initialCards.slice(0, 3)
@@ -65,12 +60,12 @@ const CatalogueSection = () => {
   const rowOneCardsAfterPromo = rowOneCards.slice(2, 3)
   const rowTwoCards = initialCards.slice(3, 7)
   const rowThreeCards = initialCards.slice(7, 10)
-  const canShowMore = visibleCardsCount < totalCount
+  const canShowMore = pagination ? page < pagination.totalPages : cards.length < totalCount
   const openRequestDialog = () => setIsRequestDialogOpen(true)
-  const showOnlyAdditionalSkeletons = isLoading && isShowMoreLoading
-  const showFullGridSkeleton = isLoading && !isShowMoreLoading
+  const showOnlyAdditionalSkeletons = isLoading && page > 1
+  const showFullGridSkeleton = isLoading && page === 1
   const pendingExtraCardsCount = Math.max(
-    Math.min(visibleCardsCount, totalCount) - cards.length,
+    Math.min(currentPageLimit, totalCount - cards.length),
     0,
   )
   const pendingExtraCardIds = Array.from(
@@ -106,10 +101,7 @@ const CatalogueSection = () => {
       </div>
 
       <div className={styles.catalogueSection__filtersBlock}>
-        <CatalogueFilterBar
-          houseOptions={houseOptions}
-          onApply={handleApplyFilters}
-        />
+        <CatalogueFilterBar onApply={handleApplyFilters} hideHouseFilter />
         <CatalogueTagsBar />
       </div>
 
@@ -299,8 +291,7 @@ const CatalogueSection = () => {
             className={styles.catalogueSection__showMoreButton}
             disabled={isLoading}
             onClick={() => {
-              setIsShowMoreLoading(true)
-              setVisibleCardsCount((prev) => prev + SHOW_MORE_STEP)
+              setPage((prev) => prev + 1)
             }}
           >
             Показать ещё
