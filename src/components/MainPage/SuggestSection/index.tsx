@@ -8,7 +8,7 @@ import Input from "@/components/ui/Input"
 import styles from "./suggestSection.module.scss"
 
 const REQUEST_API_URL = "/api/crm-request"
-const SUGGEST_PRESENTATION_FILE_NAME = "Презентация ЖК Ясный Берег.pdf"
+const SUGGEST_PRESENTATION_FILE_NAME = "Околица. Презентация о ЖК.pdf"
 const SUGGEST_PRESENTATION_FILE_URL = `/presentations/${encodeURIComponent(SUGGEST_PRESENTATION_FILE_NAME)}`
 
 const suggestCards = [

@@ -21,8 +21,8 @@ interface CatalogPresentationSectionProps {
 const REQUEST_API_URL = "/api/crm-request"
 
 const PRESENTATION_FILES = {
-  catalog: "Презентация ЖК Ясный Берег.pdf",
-  "family-mortgage": "Презентация квартир, Ипотека 3,7.pdf",
+  catalog: "Околица. Презентация о ЖК.pdf",
+  "family-mortgage": "Околица_Презентация_с_квартирами.pdf",
 } as const
 
 type PresentationVariant = keyof typeof PRESENTATION_FILES
