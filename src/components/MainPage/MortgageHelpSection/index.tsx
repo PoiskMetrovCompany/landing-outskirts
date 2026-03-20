@@ -23,7 +23,10 @@ const contactTypeCommentMap: Record<string, string> = {
 const getApiPhone = (rawPhone: string) => {
   const digits = rawPhone.replace(/\D/g, "")
 
-  if (digits.length === 11 && (digits.startsWith("7") || digits.startsWith("8"))) {
+  if (
+    digits.length === 11 &&
+    (digits.startsWith("7") || digits.startsWith("8"))
+  ) {
     return `+7${digits.slice(1)}`
   }
 
@@ -58,7 +61,7 @@ const MortgageHelpSection = () => {
       contactTypeCommentMap[contactType] || contactTypeOptions[0].label
     const payload = {
       phone: getApiPhone(phone),
-      title: `Клиент Лендинга Ясный Берег хочет получить помощь с ипотекой. Просит ${preferredContact}`,
+      title: `Клиент Лендинга Околица хочет получить помощь с ипотекой. Просит ${preferredContact}`,
     }
 
     try {
@@ -96,8 +99,9 @@ const MortgageHelpSection = () => {
         <div className={styles.mortgageHelpSection__content}>
           <div className={styles.mortgageHelpSection__info}>
             <h2 className={styles.mortgageHelpSection__title}>
-              Мы поможем <br className={styles.mortgageHelpSection__titleBreak} />{" "}
-              получить ипотеку
+              Мы поможем{" "}
+              <br className={styles.mortgageHelpSection__titleBreak} /> получить
+              ипотеку
             </h2>
 
             <p className={styles.mortgageHelpSection__description}>
@@ -106,7 +110,10 @@ const MortgageHelpSection = () => {
             </p>
           </div>
 
-          <form className={styles.mortgageHelpSection__form} onSubmit={handleSubmit}>
+          <form
+            className={styles.mortgageHelpSection__form}
+            onSubmit={handleSubmit}
+          >
             <div className={styles.mortgageHelpSection__fields}>
               <label className={styles.mortgageHelpSection__fieldLabel}>
                 <Input
@@ -151,7 +158,9 @@ const MortgageHelpSection = () => {
               <span className={styles.mortgageHelpSection__approvalText}>
                 Я соглашаюсь с условиями{" "}
                 <strong>
-                  <Link href="/policy">политики обработки персональных данных</Link>
+                  <Link href="/policy">
+                    политики обработки персональных данных
+                  </Link>
                 </strong>
               </span>
             </label>

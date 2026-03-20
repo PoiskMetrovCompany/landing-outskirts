@@ -36,7 +36,10 @@ const contactTypeCommentMap: Record<string, string> = {
 const getApiPhone = (rawPhone: string) => {
   const digits = rawPhone.replace(/\D/g, "")
 
-  if (digits.length === 11 && (digits.startsWith("7") || digits.startsWith("8"))) {
+  if (
+    digits.length === 11 &&
+    (digits.startsWith("7") || digits.startsWith("8"))
+  ) {
     return `+7${digits.slice(1)}`
   }
 
@@ -80,12 +83,14 @@ const ExcursionSection = () => {
     setIsSubmitting(true)
 
     const requestCommentPart =
-      requestTypeCommentMap[requestType] || requestTypeOptions[0]?.label.toLowerCase()
+      requestTypeCommentMap[requestType] ||
+      requestTypeOptions[0]?.label.toLowerCase()
     const contactCommentPart =
-      contactTypeCommentMap[contactType] || contactTypeOptions[0]?.label.toLowerCase()
+      contactTypeCommentMap[contactType] ||
+      contactTypeOptions[0]?.label.toLowerCase()
     const payload = {
       phone: getApiPhone(phone),
-      title: `Клиента Лендинга Ясный берег заинтересовал проект он хочет ${requestCommentPart} ${contactCommentPart}`,
+      title: `Клиента Лендинга Околица заинтересовал проект он хочет ${requestCommentPart} ${contactCommentPart}`,
     }
 
     try {
@@ -175,7 +180,9 @@ const ExcursionSection = () => {
               <span className={styles.excursionSection__approvalText}>
                 Я соглашаюсь с условиями{" "}
                 <strong>
-                  <Link href="/policy">политики обработки персональных данных</Link>
+                  <Link href="/policy">
+                    политики обработки персональных данных
+                  </Link>
                 </strong>
               </span>
             </label>

@@ -84,7 +84,7 @@ const CatalogPresentationSection = ({
     const deliveryChannel = channel === "max" ? "MAX" : "telegram"
     const payload = {
       phone: getApiPhone(phone),
-      title: `Клиент Лендинга Ясный берег хочет получить подробную презентацию проекта в ${deliveryChannel}`,
+      title: `Клиент Лендинга Околица хочет получить подробную презентацию проекта в ${deliveryChannel}`,
     }
 
     try {

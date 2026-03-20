@@ -26,7 +26,10 @@ const requestTypeCommentMap: Record<string, string> = {
 const getApiPhone = (rawPhone: string) => {
   const digits = rawPhone.replace(/\D/g, "")
 
-  if (digits.length === 11 && (digits.startsWith("7") || digits.startsWith("8"))) {
+  if (
+    digits.length === 11 &&
+    (digits.startsWith("7") || digits.startsWith("8"))
+  ) {
     return `+7${digits.slice(1)}`
   }
 
@@ -68,10 +71,11 @@ export default function RequestDialog({
 
     setIsSubmitting(true)
 
-    const selectedAction = requestTypeCommentMap[requestType] || requestType.toUpperCase()
+    const selectedAction =
+      requestTypeCommentMap[requestType] || requestType.toUpperCase()
     const payload = {
       phone: getApiPhone(phone),
-      title: `Пользователь хочет ${selectedAction} ЖК Ясный берег`,
+      title: `Пользователь хочет ${selectedAction} ЖК Околица`,
     }
 
     try {
@@ -158,7 +162,9 @@ export default function RequestDialog({
                 <span className={styles.dialog__approvalText}>
                   Я соглашаюсь с условиями{" "}
                   <strong>
-                    <Link href="/policy">политики обработки персональных данных</Link>
+                    <Link href="/policy">
+                      политики обработки персональных данных
+                    </Link>
                   </strong>
                 </span>
               </label>

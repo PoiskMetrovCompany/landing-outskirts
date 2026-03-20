@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useMemo, useState } from "react"
 
 import PropertyCard from "@/components/PropertyCard"
 import PropertyCardSkeleton from "@/components/PropertyCardSkeleton"
@@ -30,8 +30,11 @@ const SKELETON_CARDS = Array.from(
 )
 
 const CatalogueSection = () => {
-  const [visibleCardsCount, setVisibleCardsCount] = useState(INITIAL_VISIBLE_CARDS)
-  const [appliedFilters, setAppliedFilters] = useState<FilterState>(INITIAL_FILTERS)
+  const [visibleCardsCount, setVisibleCardsCount] = useState(
+    INITIAL_VISIBLE_CARDS,
+  )
+  const [appliedFilters, setAppliedFilters] =
+    useState<FilterState>(INITIAL_FILTERS)
   const [isRequestDialogOpen, setIsRequestDialogOpen] = useState(false)
   const [isShowMoreLoading, setIsShowMoreLoading] = useState(false)
   const { houseOptions } = useBuildings()
@@ -42,12 +45,6 @@ const CatalogueSection = () => {
   })
 
   const cards = useMemo(() => flats.map(mapFlatToOfferCard), [flats])
-
-  useEffect(() => {
-    if (!isLoading) {
-      setIsShowMoreLoading(false)
-    }
-  }, [isLoading])
 
   const handleApplyFilters = useCallback((filters: FilterState) => {
     setIsShowMoreLoading(false)
@@ -147,7 +144,8 @@ const CatalogueSection = () => {
                 Подходящих вариантов нет
               </p>
               <p className={styles.catalogueSection__emptyText}>
-                Измените фильтры или оставьте заявку и мы подберем квартиру для вас
+                Измените фильтры или оставьте заявку и мы подберем квартиру для
+                вас
               </p>
             </div>
             <div className={styles.catalogueSection__bannerWrapper}>
@@ -178,9 +176,9 @@ const CatalogueSection = () => {
             <div className={styles.catalogueSection__tabletOnly}>
               <PromoCard
                 imageSrc="/images/catalogue/image-discount.webp"
-                imageAlt="Квартиры под 0,1% на этапе стройки"
-                title="Квартиры под 0,1% на этапе стройки"
-                subtitle="от 13 980 ₽/мес"
+                imageAlt="скидка на квартиры"
+                title="скидка на квартиры"
+                subtitle="до 4%"
                 onButtonClick={openRequestDialog}
               />
             </div>
@@ -203,9 +201,9 @@ const CatalogueSection = () => {
             <div className={styles.catalogueSection__tabletHidden}>
               <PromoCard
                 imageSrc="/images/catalogue/image-discount.webp"
-                imageAlt="Квартиры под 0,1% на этапе стройки"
-                title="Квартиры под 0,1% на этапе стройки"
-                subtitle="от 13 980 ₽/мес"
+                imageAlt="скидка на квартиры"
+                title="скидка на квартиры"
+                subtitle="до 4%"
                 onButtonClick={openRequestDialog}
               />
             </div>
@@ -250,9 +248,9 @@ const CatalogueSection = () => {
 
             <PromoCard
               imageSrc="/images/catalogue/image-builder-discount.webp"
-              imageAlt="Рассрочка 0% от застройщика"
-              title="Рассрочка 0% от застройщика"
-              subtitle="от 80 000 ₽/мес"
+              imageAlt="Семейная ипотека"
+              title="Семейная ипотека"
+              subtitle="первоначальный взнос от ~20%"
               onButtonClick={openRequestDialog}
             />
 

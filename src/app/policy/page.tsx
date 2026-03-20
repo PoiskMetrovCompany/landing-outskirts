@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Политика в отношении обработки персональных данных сайта poisk.metrov.site.",
 }
 
-const siteUrl = "https://ясный-берег-новосибирск.рф"
+const siteUrl = "https://околица-новосибирск.рф"
 const contactEmail = "centrnovostroyek@yandex.ru"
 
 export default function PolicyPage() {
