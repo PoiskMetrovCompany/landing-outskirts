@@ -94,7 +94,7 @@ const REVIEW_SLIDES: ReviewSlide[] = [
         imageSrc: "/images/main-page/reviews/review-8.webp",
         imageAlt:
           "У нас в плане отделки только ерундовые замечания были. Заменили пару наличников на дверях и ручку на окне. Все сделали по гарантии в течение недели. Считаю, что вполне адекватно!",
-        aspectRatio: "364/136",
+        aspectRatio: "666/324",
       },
     ],
   },

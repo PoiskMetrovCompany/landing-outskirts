@@ -1,6 +1,6 @@
 .suggestSection {
   position: relative;
-  height: 618px;
+  height: 648px;
   overflow: hidden;
   padding: 65px 120px 80px 120px;
   margin-left: -120px;
@@ -9,23 +9,23 @@
   @include screen-lg {
     padding: 56px 80px;
     margin-left: -80px;
-    height: 517px;
+    height: 568px;
   }
 
   @include screen-md {
-    height: 481px;
+    height: 532px;
     padding: 56px 40px;
     margin-left: -40px;
   }
 
   @include screen-sm {
-    height: 618px;
+    height: 676px;
     padding: 48px 40px 40px 40px;
     margin-left: -40px;
   }
 
   @include screen-xss {
-    height: 473px;
+    height: 514px;
     padding: 24px 16px;
     margin-left: -16px;
   }
@@ -74,7 +74,7 @@
     @include screen-xss {
       flex-direction: column;
       align-items: flex-start;
-      gap: 56px;
+      gap: 48px;
     }
   }
 

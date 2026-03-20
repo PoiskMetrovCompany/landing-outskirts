@@ -3,7 +3,7 @@
 .excursionSection {
   position: relative;
   width: calc(100% + 240px);
-  min-height: 850px;
+  min-height: 836px;
   background-image: url("/images/main-page/excursion-bg.webp");
   background-position: center;
   background-repeat: no-repeat;
@@ -12,25 +12,25 @@
 
   @include screen-lg {
     width: calc(100% + 160px);
-    min-height: 638px;
+    min-height: 740px;
     margin: 0 -80px;
   }
 
   @include screen-md {
     width: calc(100% + 80px);
-    min-height: 547px;
+    min-height: 598px;
     margin: 0 -40px;
   }
 
   @include screen-sm {
     width: calc(100% + 80px);
-    min-height: 531px;
+    min-height: 582px;
     margin: 0 -40px;
   }
 
   @include screen-xss {
     width: calc(100% + 32px);
-    min-height: 425px;
+    min-height: 466px;
     margin: 0 -16px;
   }
 

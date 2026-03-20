@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react"
 import styles from "./map.module.scss"
 
 const MARKER_COORDINATES = {
-  latitude: 55.014516,
-  longitude: 82.891464,
+  latitude: 55.11790355609215,
+  longitude: 82.94755731911265,
 }
 
 const MAP_ZOOM = 16
