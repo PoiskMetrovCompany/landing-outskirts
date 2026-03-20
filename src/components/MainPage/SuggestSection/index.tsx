@@ -14,15 +14,15 @@ const SUGGEST_PRESENTATION_FILE_URL = `/presentations/${encodeURIComponent(SUGGE
 const suggestCards = [
   {
     id: "river-view",
-    title: "Скидки на квартиры до 4%",
+    title: "Скидки на квартиры",
     image: "/images/main-page/suggest/suggest-1.webp",
-    alt: "Скидки на квартиры до 4%",
+    alt: "Скидки на квартиры",
   },
   {
     id: "river-view2",
-    title: "Субсидированная ипотека",
+    title: "Квартиры в ипотеку 6%",
     image: "/images/main-page/suggest/suggest-2.webp",
-    alt: "Субсидированная ипотека",
+    alt: "Квартиры в ипотеку 6%",
   },
   {
     id: "river-view3",
@@ -123,7 +123,7 @@ const SuggestSection = () => {
       <div className={styles.suggestSection__content}>
         <article className={styles.suggestSection__formCard}>
           <h2 className={styles.suggestSection__title}>
-            Предложения от 0,1% в одном каталоге
+            Все предложения в одном каталоге
           </h2>
 
           <form className={styles.suggestSection__form} onSubmit={handleSubmit}>
