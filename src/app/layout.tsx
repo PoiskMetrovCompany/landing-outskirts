@@ -20,21 +20,21 @@ const onest = Onest({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://poisk.metrov.site"),
+  metadataBase: new URL("https://xn-----7kcfeupdbmbhf5ajbfb5bqe2h.xn--p1ai"),
   title:
     "Купить квартиру в ЖК Околица Новосибирск - от 3,9 млн ₽ | Ипотека от 4,1%",
   description:
     "ЖК Околица - жилой комплекс в Калининском районе Новосибирска у березовой рощи. Продажа квартир с ремонтом под ключ от застройщика КПД-Газстрой: студии, двух- и трехкомнатные. Цены от 3 900 000 ₽. Семейная ипотека от 6%, субсидированная от 4,1%, рассрочка. Дворы без машин, школа рядом. Официальный партнер застройщика - запишитесь на просмотр.",
   verification: {
-    yandex: "e578db95ea5d131c",
+    yandex: "39f02a14a101e707",
   },
   icons: {
     icon: [
-      { url: "/icons/Favicon.ico", sizes: "any" },
-      { url: "/icons/Favicon.ico", type: "image/x-icon" },
+      { url: "/icons/favicon.ico", sizes: "any" },
+      { url: "/icons/favicon.ico", type: "image/x-icon" },
     ],
-    shortcut: "/icons/Favicon.ico",
-    apple: "/icons/Favicon.ico",
+    shortcut: "/icons/favicon.ico",
+    apple: "/icons/favicon.ico",
   },
   openGraph: {
     title:
