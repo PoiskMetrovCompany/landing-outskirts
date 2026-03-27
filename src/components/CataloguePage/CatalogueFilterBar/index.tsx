@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button"
 import IconImage from "@/components/ui/IconImage"
 
 import CatalogueFiltersModal from "../CatalogueFiltersModal"
+import type { CatalogueRoomOption } from "@/lib/roomTypes"
 
 import styles from "./catalogueFilterBar.module.scss"
 
@@ -189,6 +190,8 @@ interface CatalogueFilterBarProps {
   onApply?: (filters: FilterState) => void
   houseOptions?: HouseOption[]
   hideHouseFilter?: boolean
+  /** Если не задано — полный статический список; иначе только эти типы (запрос метаданных ЖК) */
+  roomOptions?: CatalogueRoomOption[]
 }
 
 export const INITIAL_FILTERS: FilterState = {
@@ -204,6 +207,7 @@ const CatalogueFilterBar = ({
   onApply,
   houseOptions,
   hideHouseFilter = false,
+  roomOptions: roomOptionsProp,
 }: CatalogueFilterBarProps) => {
   const [activeDropdown, setActiveDropdown] = useState<ActiveDropdown>(null)
   const [filters, setFilters] = useState<FilterState>(INITIAL_FILTERS)
@@ -222,6 +226,8 @@ const CatalogueFilterBar = ({
     floor,
   } = filters
   const houseFilterOptions: HouseOption[] = houseOptions ?? []
+  const roomFilterOptions: CatalogueRoomOption[] =
+    roomOptionsProp ?? ROOM_OPTIONS
 
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -284,7 +290,9 @@ const CatalogueFilterBar = ({
     if (selectedRooms.length === 0)
       return isCompactFilterLabels ? "Комнат" : "Кол-во комнат"
     if (selectedRooms.length === 1) {
-      return ROOM_OPTIONS.find((o) => o.value === selectedRooms[0])?.label ?? ""
+      return (
+        roomFilterOptions.find((o) => o.value === selectedRooms[0])?.label ?? ""
+      )
     }
     return `${selectedRooms.length} типа`
   }
@@ -362,7 +370,7 @@ const CatalogueFilterBar = ({
             />
             {activeDropdown === "rooms" && (
               <div className={styles.filterBar__panel}>
-                {ROOM_OPTIONS.map((opt) => (
+                {roomFilterOptions.map((opt) => (
                   <CheckboxItem
                     key={opt.value}
                     label={opt.label}
@@ -466,6 +474,7 @@ const CatalogueFilterBar = ({
         onOpenChange={setIsFiltersModalOpen}
         houseOptions={houseFilterOptions}
         hideHouseFilter={hideHouseFilter}
+        roomOptions={roomFilterOptions}
         filters={filters}
         onFiltersChange={setFilters}
         onApply={handleApply}

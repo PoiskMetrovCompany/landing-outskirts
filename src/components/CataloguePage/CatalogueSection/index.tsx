@@ -16,8 +16,10 @@ import CatalogueFilterBar, {
   type FilterState,
 } from "@/components/CataloguePage/CatalogueFilterBar"
 import CatalogueTagsBar from "@/components/CataloguePage/CatalogueTagsBar"
+import { useApartmentsBestOffers } from "@/hooks/useApartmentsBestOffers"
 import { useFlats } from "@/hooks/useFlats"
 import { mapFlatToOfferCard } from "@/hooks/mappers/flatMapper"
+import { roomTypesToCatalogueOptions } from "@/lib/roomTypes"
 
 import styles from "./catalogueSection.module.scss"
 
@@ -33,6 +35,16 @@ const CatalogueSection = () => {
     useState<FilterState>(INITIAL_FILTERS)
   const [page, setPage] = useState(1)
   const [isRequestDialogOpen, setIsRequestDialogOpen] = useState(false)
+  const { room_types, isLoading: roomTypesLoading } =
+    useApartmentsBestOffers(undefined)
+  const catalogueRoomOptions = useMemo(
+    () => roomTypesToCatalogueOptions(room_types),
+    [room_types],
+  )
+  const roomOptionsForBar =
+    roomTypesLoading && room_types.length === 0
+      ? undefined
+      : catalogueRoomOptions
   const currentPageLimit = page === 1 ? INITIAL_VISIBLE_CARDS : SHOW_MORE_STEP
   const { flats, totalCount, isLoading, pagination } = useFlats({
     filters: appliedFilters,
@@ -101,7 +113,11 @@ const CatalogueSection = () => {
       </div>
 
       <div className={styles.catalogueSection__filtersBlock}>
-        <CatalogueFilterBar onApply={handleApplyFilters} hideHouseFilter />
+        <CatalogueFilterBar
+          onApply={handleApplyFilters}
+          hideHouseFilter
+          roomOptions={roomOptionsForBar}
+        />
         <CatalogueTagsBar />
       </div>
 

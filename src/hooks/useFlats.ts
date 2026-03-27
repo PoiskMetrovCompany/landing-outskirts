@@ -14,6 +14,8 @@ const ROOM_TO_API: Record<string, string> = {
   "2": "2",
   "3": "3",
   "4": "4",
+  "4_plus": "4",
+  "4+": "4",
 }
 
 function buildFlatsQuery(
