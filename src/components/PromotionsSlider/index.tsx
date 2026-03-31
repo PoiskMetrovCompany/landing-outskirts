@@ -1,12 +1,13 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 import type { CSSProperties } from "react"
 import { Fragment } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination } from "swiper/modules"
+import type { Swiper as SwiperClass } from "swiper"
 
-import MoreLink from "../ui/MoreLink"
+import Button from "../ui/Button"
+import IconImage from "../ui/IconImage"
 import styles from "./promotionsSlider.module.scss"
 
 const slides = [
@@ -70,6 +71,9 @@ const renderTitle = (title: string) => {
 
 const PromotionsSlider = ({ onMoreClick }: PromotionsSliderProps) => {
   const [activeSlide, setActiveSlide] = useState(0)
+  const swiperRef = useRef<SwiperClass | null>(null)
+  const [isBeginning, setIsBeginning] = useState(true)
+  const [isEnd, setIsEnd] = useState(false)
 
   const sliderStyle = {
     "--promotions-active-bullet-color": activeBulletColors[activeSlide],
@@ -79,17 +83,20 @@ const PromotionsSlider = ({ onMoreClick }: PromotionsSliderProps) => {
     <section className={styles.promotions} aria-label="Все акции">
       <article className={styles.promotions__card}>
         <Swiper
-          modules={[Pagination]}
           slidesPerView={1}
+          autoHeight
           className={styles.promotions__slider}
           style={sliderStyle}
-          onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
-          pagination={{
-            clickable: true,
-            dynamicBullets: false,
-            renderBullet: (_, className) => {
-              return `<span class="${className} ${styles.promotions__bullet}"></span>`
-            },
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper
+            setIsBeginning(swiper.isBeginning)
+            setIsEnd(swiper.isEnd)
+          }}
+          onSlideChange={(swiper) => {
+            swiperRef.current = swiper
+            setActiveSlide(swiper.realIndex)
+            setIsBeginning(swiper.isBeginning)
+            setIsEnd(swiper.isEnd)
           }}
         >
           {slides.map((slide, index) => (
@@ -104,23 +111,46 @@ const PromotionsSlider = ({ onMoreClick }: PromotionsSliderProps) => {
                   </h2>
                   <p className={styles.promotions__price}>{slide.price}</p>
                 </div>
-
-                <MoreLink
-                  href={slide.href}
-                  className={styles.promotions__moreLink}
-                  onClick={(event) => {
-                    if (!onMoreClick) return
-
-                    event.preventDefault()
-                    onMoreClick()
-                  }}
-                >
-                  Подробнее
-                </MoreLink>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
+
+        <div className={styles.promotions__arrows} aria-label="Навигация по акциям">
+          <Button
+            color="transparent"
+            className={styles.promotions__arrowButton}
+            onClick={() => swiperRef.current?.slidePrev()}
+            aria-label="Предыдущая акция"
+            disabled={isBeginning}
+          >
+            <IconImage
+              className={styles.promotions__arrowIcon}
+              imageClassName={styles.promotions__arrowIconImage}
+              iconLink="/icons/header/arrow-slide-right.svg"
+              alt=""
+              loading="lazy"
+            />
+          </Button>
+
+          <Button
+            color="transparent"
+            className={styles.promotions__arrowButton}
+            onClick={() => swiperRef.current?.slideNext()}
+            aria-label="Следующая акция"
+            disabled={isEnd}
+          >
+            <IconImage
+              className={[styles.promotions__arrowIcon, styles["promotions__arrowIcon--next"]].join(
+                " ",
+              )}
+              imageClassName={styles.promotions__arrowIconImage}
+              iconLink="/icons/header/arrow-slide-right.svg"
+              alt=""
+              loading="lazy"
+            />
+          </Button>
+        </div>
       </article>
     </section>
   )
