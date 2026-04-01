@@ -17,7 +17,7 @@ const ZERO_TIMER = {
 
 const getInitialTimer = () => {
   const now = new Date()
-  const deadline = new Date(now.getFullYear(), 2, 31, 0, 0, 0, 0)
+  const deadline = new Date(now.getFullYear(), 3, 31, 0, 0, 0, 0)
   const difference = deadline.getTime() - now.getTime()
 
   if (difference <= 0) {
