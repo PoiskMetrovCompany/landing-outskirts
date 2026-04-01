@@ -9,17 +9,20 @@ import clsx from "clsx"
 import Button from "@/components/ui/Button"
 import IconImage from "@/components/ui/IconImage"
 
+import type { CatalogueRoomOption } from "@/lib/roomTypes"
+
 import type { FilterState, HouseOption } from "../CatalogueFilterBar"
 
 import styles from "./catalogueFiltersModal.module.scss"
 
 // ─── Constants ─────────────────────────────────────────────────────────────────
 
-const ROOM_OPTIONS = [
-  { value: "1", label: "1" },
-  { value: "2", label: "2" },
-  { value: "3", label: "3" },
-  { value: "4+", label: "4" },
+const DEFAULT_ROOM_OPTIONS: CatalogueRoomOption[] = [
+  { value: "studio", label: "Студия" },
+  { value: "1", label: "1 комната" },
+  { value: "2", label: "2 комнаты" },
+  { value: "3", label: "3 комнаты" },
+  { value: "4", label: "4 комнаты" },
 ]
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -29,6 +32,7 @@ interface CatalogueFiltersModalProps {
   onOpenChange: (open: boolean) => void
   houseOptions?: HouseOption[]
   hideHouseFilter?: boolean
+  roomOptions?: CatalogueRoomOption[]
   filters: FilterState
   onFiltersChange: (filters: FilterState) => void
   onApply: () => void
@@ -43,6 +47,7 @@ const CatalogueFiltersModal = ({
   onOpenChange,
   houseOptions,
   hideHouseFilter = false,
+  roomOptions,
   filters,
   onFiltersChange,
   onApply,
@@ -51,6 +56,7 @@ const CatalogueFiltersModal = ({
 }: CatalogueFiltersModalProps) => {
   const handleClose = () => onOpenChange(false)
   const houseFilterOptions = houseOptions ?? []
+  const roomFilterOptions = roomOptions ?? DEFAULT_ROOM_OPTIONS
 
   const toggleHouse = (value: string) => {
     const next = filters.house.includes(value)
@@ -139,7 +145,7 @@ const CatalogueFiltersModal = ({
                   Количество комнат
                 </div>
                 <div className={styles.modal__sectionOptions}>
-                  {ROOM_OPTIONS.map((opt) => (
+                  {roomFilterOptions.map((opt) => (
                     <button
                       key={opt.value}
                       type="button"

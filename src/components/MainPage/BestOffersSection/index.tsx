@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import clsx from "clsx"
 import { Swiper, SwiperSlide } from "swiper/react"
 import type { Swiper as SwiperClass } from "swiper"
@@ -10,64 +10,53 @@ import PropertyCardSkeleton from "@/components/PropertyCardSkeleton"
 import RequestDialog from "@/components/RequestDialog"
 import Button from "@/components/ui/Button"
 import IconImage from "@/components/ui/IconImage"
-import type { FilterState } from "@/components/CataloguePage/CatalogueFilterBar"
-import { useFlats } from "@/hooks/useFlats"
+import { useApartmentsBestOffers } from "@/hooks/useApartmentsBestOffers"
 import { mapFlatToOfferCard } from "@/hooks/mappers/flatMapper"
-import type { PropertyType } from "@/hooks/mappers/mapper"
+import { roomTypesToBestOffersTabs } from "@/lib/roomTypes"
 import styles from "./bestOffersSection.module.scss"
-
-const tabs: { id: PropertyType; label: string }[] = [
-  { id: "all", label: "Все" },
-  { id: "st", label: "СТ" },
-  { id: "1k", label: "1К" },
-  { id: "2k", label: "2К" },
-  { id: "3k", label: "3К" },
-  { id: "4k", label: "4+К" },
-]
-
-const ROOM_FILTER_MAP: Record<Exclude<PropertyType, "all">, string> = {
-  st: "studio",
-  "1k": "1",
-  "2k": "2",
-  "3k": "3",
-  "4k": "4",
-}
-
-const LIMIT_ALL = 12
-const LIMIT_BY_ROOM = 7
 
 const skeletonCards = Array.from(
   { length: 8 },
   (_, index) => `skeleton-${index}`,
 )
 
+type ActiveOfferTab = "all" | string
+
 const BestOffersSection = () => {
-  const [activeTab, setActiveTab] = useState<PropertyType>("all")
+  const [activeTab, setActiveTab] = useState<ActiveOfferTab>("all")
   const swiperRef = useRef<SwiperClass | null>(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [isBeginning, setIsBeginning] = useState(true)
   const [isEnd, setIsEnd] = useState(false)
 
-  const filters: FilterState = useMemo(
-    () => ({
-      house: [],
-      rooms: activeTab === "all" ? [] : [ROOM_FILTER_MAP[activeTab]],
-      price: { min: "", max: "" },
-      area: { min: "", max: "" },
-      floor: { min: "", max: "" },
-    }),
-    [activeTab],
-  )
+  const roomsQuery = activeTab === "all" ? undefined : activeTab
+  const { apartments, room_types, isLoading } =
+    useApartmentsBestOffers(roomsQuery)
 
-  const limit = activeTab === "all" ? LIMIT_ALL : LIMIT_BY_ROOM
-  const { flats, isLoading } = useFlats({ filters, page: 1, limit })
+  const tabs = useMemo(() => roomTypesToBestOffersTabs(room_types), [room_types])
+
+  useEffect(() => {
+    if (activeTab === "all") return
+    if (!tabs.some((t) => t.roomsQuery === activeTab)) {
+      setActiveTab("all")
+      swiperRef.current?.slideTo(0)
+    }
+  }, [activeTab, tabs])
 
   const openRequestDialog = () => setIsDialogOpen(true)
 
-  const offerCards = useMemo(() => flats.map(mapFlatToOfferCard), [flats])
+  const offerCards = useMemo(
+    () => apartments.map(mapFlatToOfferCard),
+    [apartments],
+  )
 
-  const handleTabChange = (tab: PropertyType) => {
-    setActiveTab(tab)
+  const handleTabAll = () => {
+    setActiveTab("all")
+    swiperRef.current?.slideTo(0)
+  }
+
+  const handleTabRooms = (rooms: string) => {
+    setActiveTab(rooms)
     swiperRef.current?.slideTo(0)
   }
 
@@ -96,18 +85,35 @@ const BestOffersSection = () => {
           </div>
 
           <nav className={styles.bestOffers__tabs} aria-label="Тип квартиры">
+            <Button
+              color="white"
+              className={clsx(
+                styles.bestOffers__tab,
+                activeTab === "all" && styles["bestOffers__tab--active"],
+              )}
+              onClick={handleTabAll}
+              aria-pressed={activeTab === "all"}
+              style={
+                activeTab === "all"
+                  ? { color: "var(--Yellow-100)" }
+                  : undefined
+              }
+            >
+              Все
+            </Button>
             {tabs.map((tab) => (
               <Button
-                key={tab.id}
+                key={tab.roomsQuery}
                 color="white"
                 className={clsx(
                   styles.bestOffers__tab,
-                  activeTab === tab.id && styles["bestOffers__tab--active"],
+                  activeTab === tab.roomsQuery &&
+                    styles["bestOffers__tab--active"],
                 )}
-                onClick={() => handleTabChange(tab.id)}
-                aria-pressed={activeTab === tab.id}
+                onClick={() => handleTabRooms(tab.roomsQuery)}
+                aria-pressed={activeTab === tab.roomsQuery}
                 style={
-                  activeTab === tab.id
+                  activeTab === tab.roomsQuery
                     ? { color: "var(--Yellow-100)" }
                     : undefined
                 }
