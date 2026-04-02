@@ -67,6 +67,16 @@ export default function HotOfferDialog({
               <div className={styles.dialog__gradient} />
             </div>
 
+            <Dialog.Close className={styles.dialog__close} aria-label="Закрыть">
+              <img
+                src="/icons/popup/close.svg"
+                alt="Закрыть"
+                width={24}
+                height={24}
+                className={styles.dialog__closeIcon}
+              />
+            </Dialog.Close>
+
             <div className={styles.dialog__top}>
               <div className={styles.dialog__timer}>
                 <span className={styles.dialog__timerText}>До конца акции</span>
