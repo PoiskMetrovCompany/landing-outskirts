@@ -95,7 +95,10 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__inner}>
         <div className={styles.header__left}>
-          <Link href="/" className={styles.header__logo}>
+          <Link
+            href="https://poisk-metrov.ru/"
+            className={styles.header__logo}
+          >
             <IconImage
               iconLink="/icons/header/logo-xl.svg"
               alt="Поиск Метров"

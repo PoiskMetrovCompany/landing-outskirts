@@ -11,7 +11,7 @@ const Footer = () => {
       <div className={styles.footer__info}>
         <div className={styles.footer__topRow}>
           <Link
-            href="/"
+            href="https://poisk-metrov.ru/"
             className={styles.footer__logoLink}
             aria-label="Поиск Метров"
           >
